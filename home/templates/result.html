@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+{#    <p>{{content}}</p>#}
+
+
+    <script>
+        var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+        var text = "";
+        var i;
+        for (i = 0; i < cars.length; i++) {
+          text += cars[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    </script>
+
+
+
+    {% for option_num, option_dict in content.items %}
+
+        <table style="background-color:lightgreen">
+
+        {% for key, value in option_dict.items %}
+
+           <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+           </tr>
+
+        {% endfor %}
+
+        </table>
+
+        <br>
+
+    {% endfor %}
+
+
+{% endblock %}
+

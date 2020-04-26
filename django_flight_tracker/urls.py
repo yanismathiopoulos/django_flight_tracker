@@ -23,15 +23,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Use include() to add paths from the catalog application
+# Use include() to add paths from the home application
 urlpatterns += [
-    path('catalog/', include('catalog.urls')),
+    path('home/', include('home.urls')),
 ]
 
 # Add URL maps to redirect the base URL to our application
 urlpatterns += [
-    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+    path('', RedirectView.as_view(url='/home/', permanent=True)),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

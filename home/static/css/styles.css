@@ -1,0 +1,14 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+h1 a, h2 a {
+    color: darkolivegreen;
+}
