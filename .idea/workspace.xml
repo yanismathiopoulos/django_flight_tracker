@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/airlines.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/first_exploration.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_functions.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/debug.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/unsuccessful_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testrun.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exploration.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_functions.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +99,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../flight_price_tracker" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -158,7 +159,7 @@
       <workItem from="1587836383601" duration="24232000" />
       <workItem from="1588093503614" duration="23000" />
       <workItem from="1588093577158" duration="43000" />
-      <workItem from="1588094561137" duration="17419000" />
+      <workItem from="1588094561137" duration="25260000" />
     </task>
     <servers />
   </component>
@@ -169,6 +170,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Inspections" timestamp="1588358089689">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Inspections/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588358089689" />
+    <state x="552" y="178" key="#Notifications" timestamp="1588357264424">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Notifications/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588357264424" />
     <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588093518373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -183,10 +192,10 @@
     <state x="289" y="287" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588331411949" />
     <state x="289" y="298" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586782860470" />
     <state x="289" y="287" key="FileChooserDialogImpl/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587912685255" />
-    <state x="0" y="175" key="SettingsEditor" timestamp="1588344944570">
+    <state x="0" y="175" key="SettingsEditor" timestamp="1588360929769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="175" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588344944570" />
+    <state x="0" y="175" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588360929769" />
     <state x="0" y="182" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586769165849" />
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588344956541">
       <screen x="0" y="0" width="1920" height="1040" />

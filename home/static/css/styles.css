@@ -14,6 +14,9 @@ h1 a, h2 a {
     color: darkolivegreen;
 }
 
+/*TODO cell input color*/
+/*name tables and different colors*/
+
 table, th, td {
     background-color: lightgreen;
     color: black;

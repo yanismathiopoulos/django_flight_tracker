@@ -135,3 +135,5 @@ out.txt
 # jupyter notebooks
 .ipynb
 .ipynb_checkpoints
+/send_email/credentials.json
+/send_email/

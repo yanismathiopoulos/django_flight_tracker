@@ -1,22 +1,20 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Flight Tracker</h1>
+    <h1>Flight Tracker</h1>
 
-<p>Welcome to <em>Flight Tracker</em>, a very basic Django website developed to track flight prices using <a href="https://www.kiwi.com/en/">kiwis api</a> for searching flights.</p>
+    <p>Welcome to <em>Flight Tracker</em>, a very basic Django website developed to track flight prices using <a
+            href="https://www.kiwi.com/en/">kiwis api</a> for searching flights.</p>
 
-<p>More text here</p>
 
-<p>And now the form.</p>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
 
-<form method="post">
-  {% csrf_token %}
-  <table>
-    {{ form }}
-  </table>
-  <input type="submit" value="Submit">
-</form>
-
-<p>You have visited this page {{ num_visits }} times.</p>
+    <p>You have visited this page {{ num_visits }} times.</p>
 
 {% endblock %}

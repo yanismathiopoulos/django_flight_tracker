@@ -4,31 +4,31 @@ import requests
 import pyshorteners
 import requests_cache
 import pandas as pd
+import io
+import sys
+from contextlib import redirect_stdout
 
 
 def download_data(apikey, parameters):
     inputs_str = urlencode(parameters)
 
-    url = "https://kiwicom-prod.apigee.net/v2/search?" + \
-          'apikey=' + apikey + '&' + inputs_str
+    url = "https://kiwicom-prod.apigee.net/v2/search?" + 'apikey=' + apikey + '&' + inputs_str
 
-    # TODO: Cache
     print("Getting the data...")
-    requests_cache.install_cache(cache_name='kiwi_cache',
-                                 backend='sqlite', expire_after=3600)
+    requests_cache.install_cache(cache_name='kiwi_cache', backend='sqlite', expire_after=3600)
     response = requests.get(url)
 
     if response.from_cache:
         print("Data loaded from cache")
+        response_json = response.json()
+    elif response.status_code == 200:
+        print("Request was successful, data was downloaded from kiwi")
+        response_json = response.json()
     else:
-        print("Data downloaded from kiwi ", response)
-    print('\n')
-
-    response_json = response.json()
+        print("Request was not successful")
+        response_json = None
 
     # print("Printing response headers: ", response.headers)
-
-    # print("Printing response_json['data'][0] for debug: ", response_json['data'][0])
 
     return response_json
 
@@ -41,8 +41,6 @@ class Flight:
     def __init__(self, flight_d):
         for key in flight_d:
             setattr(self, key, flight_d[key])
-
-        #         self.local_departure += 'lol'
 
 
 class Outbound:
@@ -79,7 +77,7 @@ class Option:
     """
 
     def __init__(self, option_d):
-        #         TODO: use the first way only for firts-level dictionary
+        #         TODO: use the first way only for first-level dictionary
 
         #         For all data on option level:
         #         for key in option_d:
@@ -113,12 +111,18 @@ class ResponseData:
 
 
 def to_hm(s):
+    """
+    Transform seconds to hours:mins
+    """
     hours = int(s / 60 // 60)
     mins = int(s / 60 - hours * 60)
     return f'{hours}h{mins:02d}m'
 
 
 def airline_name(airline_code):
+    """
+    Maps airline operator code to its name
+    """
     try:
         df_operating_carriers = pd.read_csv('data/airlines.dat')  # https://github.com/jpatokal/openflights
 
@@ -147,7 +151,7 @@ def airline_name(airline_code):
 
 def print_n_options(options, n):
     d = dict()
-    for i in range(1, min(len(options), n+1)):
+    for i in range(1, min(len(options), n + 1)):
         d[i] = dict()
         d[i]['option'] = i
         print('--OPTION ', i)
@@ -215,8 +219,16 @@ def print_n_options(options, n):
 
 def search(apikey, parameters, n):
     response_json = download_data(apikey, parameters)
-    options = ResponseData(response_json['data']).options
-    first_n_options = print_n_options(options, n)
+    if response_json is not None:
+        options = ResponseData(response_json['data']).options
+        # save_stdout = sys.stdout
+        # sys.stdout = io.BytesIO()
+        first_n_options = print_n_options(options, n)
+        # TODO suppress print
+        # sys.stdout = save_stdout
+        # print("captured_stdout", sys.stdout)
+    else:
+        print("There is no response")
+        first_n_options = None
 
     return first_n_options
-
