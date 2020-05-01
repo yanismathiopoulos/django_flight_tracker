@@ -18,6 +18,9 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.views import serve
+from django.views.decorators.cache import never_cache, cache_control
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,3 +39,9 @@ urlpatterns += [
 # Use static() to add url mapping to serve static files during development (only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+# TODO: I added the following to not save cache of the static files, check if any of them are needed
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, view=cache_control(no_cache=True, must_revalidate=True)(serve))
+#
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, view=never_cache(serve))

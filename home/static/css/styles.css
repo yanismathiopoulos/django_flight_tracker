@@ -1,14 +1,30 @@
 body {
     background-color: lightgoldenrodyellow;
+    /*background-color: lightcyan;*/
 }
 
-table {
-  display: table;
-  border-collapse: separate;
-  border-spacing: 2px;
-  border-color: gray;
-}
+/*table {*/
+/*  display: table;*/
+/*  border-collapse: separate;*/
+/*  border-spacing: 2px;*/
+/*  border-color: gray;*/
+/*}*/
 
 h1 a, h2 a {
     color: darkolivegreen;
+}
+
+table, th, td {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid darkolivegreen;
+}
+
+table {
+    width: 600px;
+}
+
+td {
+    height: 50px;
+    text-align: center;
 }

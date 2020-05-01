@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignored manually
+kiwi_cache.sqlite
+out.txt
+
+# jupyter notebooks
+.ipynb
+.ipynb_checkpoints

@@ -15,7 +15,7 @@ def index(request):
         if form.is_valid():
 
             apikey = form.cleaned_data['apikey']
-            del form.cleaned_data['apikey']     #TODO: find a better way
+            del form.cleaned_data['apikey']     # TODO: find a better way
             parameters = form.cleaned_data
             content = search(apikey=apikey, parameters=parameters, n=10)
 

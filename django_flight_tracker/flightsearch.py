@@ -3,6 +3,7 @@ from urllib.parse import urlencode
 import requests
 import pyshorteners
 import requests_cache
+import pandas as pd
 
 
 def download_data(apikey, parameters):
@@ -25,7 +26,7 @@ def download_data(apikey, parameters):
 
     response_json = response.json()
 
-    print("Printing response headers: ", response.headers)
+    # print("Printing response headers: ", response.headers)
 
     # print("Printing response_json['data'][0] for debug: ", response_json['data'][0])
 
@@ -117,102 +118,97 @@ def to_hm(s):
     return f'{hours}h{mins:02d}m'
 
 
+def airline_name(airline_code):
+    try:
+        df_operating_carriers = pd.read_csv('data/airlines.dat')  # https://github.com/jpatokal/openflights
+
+        df_operating_carriers.columns = ['ind', 'full_name', 'full_name2', 'two_digit_code', 'three_digit_code',
+                                         'name_in_capital', 'country', 'yesno']
+
+        try:
+            air_name = df_operating_carriers.loc[
+                df_operating_carriers['two_digit_code'] == airline_code]['full_name'].unique()[0]
+        except IndexError:
+            try:
+                air_name = df_operating_carriers.loc[df_operating_carriers['three_digit_code'] == airline_code][
+                    'full_name'].unique()[0]
+            except IndexError:
+                air_name = airline_code
+
+    except FileNotFoundError:
+        print("Airline mapping table was not found")
+        air_name = airline_code
+
+    if air_name == '':
+        air_name = airline_code
+
+    return air_name
+
+
 def print_n_options(options, n):
-    with open('out.txt', 'w') as f:
-        for i in range(1, n + 1):
-            print('--OPTION ', i, file=f)
-            print('link: ', pyshorteners.Shortener().tinyurl.short(options[i].deep_link), file=f)
-            print('price: ', options[i].price, file=f)
-            print('total duration: ', to_hm(options[i].duration_total), file=f)
-
-            for x, y, z in zip(['outbound', 'inbound'],
-                               [options[i].duration_outbound, options[i].duration_inbound],
-                               [options[i].outbound, options[i].inbound]
-                               ):
-                print('\n', file=f)
-                print('{} (duration: {})'.format(x, to_hm(y)), file=f)
-
-                print('from: ', z.flights[0].flyFrom, file=f)
-
-                #     print('via {} stop(s): {}'.format(
-                #         1,
-                #         options[0].outbound.flights[1,2,3,4]['flyTo']), file=f)
-
-                print('to: ', z.flights[-1].flyTo, file=f)
-
-                print('departure time: ',
-                      dt.datetime.strftime(
-                          dt.datetime.strptime(
-                              z.flights[0].local_departure,  # first departure time
-                              '%Y-%m-%dT%H:%M:%S.000Z'
-                          ),
-                          '%a %d-%b-%Y %H:%M'), file=f
-                      )
-
-                print('arrival time: ',
-                      dt.datetime.strftime(
-                          dt.datetime.strptime(
-                              z.flights[-1].local_arrival,  # last arrival time
-                              '%Y-%m-%dT%H:%M:%S.000Z'
-                          ),
-                          '%a %d-%b-%Y %H:%M'), file=f
-                      )
-
-            print('\n', file=f)
-            print('\n', file=f)
-
-    # with open('out.txt', 'r') as file:
-    #     output = file.read().replace('\n', '')
-
-
-def options_to_dict(options, n):
     d = dict()
-    for i in range(1, n + 1):
+    for i in range(1, min(len(options), n+1)):
         d[i] = dict()
         d[i]['option'] = i
+        print('--OPTION ', i)
         d[i]['link'] = pyshorteners.Shortener().tinyurl.short(options[i].deep_link)
+        print('link: ', d[i]['link'])
         d[i]['price'] = options[i].price
+        print('price: ', d[i]['price'])
         d[i]['duration_total'] = to_hm(options[i].duration_total)
+        print('total duration: ', d[i]['duration_total'])
 
-        d[i]['duration_outbound'] = to_hm(options[i].duration_outbound)
-        d[i]['outbound_from'] = options[i].outbound.flights[0].flyFrom
-        d[i]['outbound_to'] = options[i].outbound.flights[-1].flyTo
+        for x, y, z in zip(['outbound', 'inbound'],
+                           [options[i].duration_outbound, options[i].duration_inbound],
+                           [options[i].outbound, options[i].inbound]
+                           ):
 
-        d[i]['outbound_departure_time'] = \
-            dt.datetime.strftime(
-                dt.datetime.strptime(
-                    options[i].outbound.flights[0].local_departure,  # first departure time
-                    '%Y-%m-%dT%H:%M:%S.000Z'
-                ),
-                '%a %d-%b-%Y %H:%M')
+            print('\n')
+            d[i][x] = dict()
+            d[i][x]['duration'] = to_hm(y)
+            print('{} (duration: {})'.format(x, d[i][x]))
 
-        d[i]['outbound_arrival_time'] = \
-            dt.datetime.strftime(
-                dt.datetime.strptime(
-                    options[i].outbound.flights[-1].local_arrival,  # last arrival time
-                    '%Y-%m-%dT%H:%M:%S.000Z'
-                ),
-                '%a %d-%b-%Y %H:%M')
+            d[i][x]['lst_airlines'] = []
+            for j in range(len(z.flights)):
+                a_n = airline_name(z.flights[j].airline)
+                d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x]['lst_airlines']
 
-        d[i]['duration_inbound'] = to_hm(options[i].duration_inbound)
-        d[i]['inbound_from'] = options[i].inbound.flights[0].flyFrom
-        d[i]['inbound_to'] = options[i].inbound.flights[-1].flyTo
+            print('airlines: ', d[i][x]['lst_airlines'])
 
-        d[i]['inbound_departure_time'] = \
-            dt.datetime.strftime(
-                dt.datetime.strptime(
-                    options[i].inbound.flights[0].local_departure,  # first departure time
-                    '%Y-%m-%dT%H:%M:%S.000Z'
-                ),
-                '%a %d-%b-%Y %H:%M')
+            d[i][x]['from'] = z.flights[0].flyFrom
+            print('from: ', d[i][x]['from'])
 
-        d[i]['inbound_arrival_time'] = \
-            dt.datetime.strftime(
-                dt.datetime.strptime(
-                    options[i].inbound.flights[-1].local_arrival,  # last arrival time
-                    '%Y-%m-%dT%H:%M:%S.000Z'
-                ),
-                '%a %d-%b-%Y %H:%M')
+            d[i][x]['lst_stops'] = []
+            for v in range(len(z.flights[:-1])):  # ignore first and last
+                d[i][x]['lst_stops'].append(z.flights[v].flyTo)
+
+            print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
+
+            d[i][x]['to'] = z.flights[-1].flyTo
+            print('to: ', d[i][x]['to'])
+
+            d[i][x]['departure_time'] = \
+                dt.datetime.strftime(
+                    dt.datetime.strptime(
+                        z.flights[0].local_departure,  # first departure time
+                        '%Y-%m-%dT%H:%M:%S.000Z'
+                    ),
+                    '%a %d-%b-%Y %H:%M')
+
+            print('departure time: ', d[i][x]['departure_time'])
+
+            d[i][x]['arrival_time'] = \
+                dt.datetime.strftime(
+                    dt.datetime.strptime(
+                        z.flights[-1].local_arrival,  # last arrival time
+                        '%Y-%m-%dT%H:%M:%S.000Z'
+                    ),
+                    '%a %d-%b-%Y %H:%M')
+
+            print('arrival time: ', d[i][x]['arrival_time'])
+
+        print('\n')
+        print('\n')
 
     return d
 
@@ -220,8 +216,7 @@ def options_to_dict(options, n):
 def search(apikey, parameters, n):
     response_json = download_data(apikey, parameters)
     options = ResponseData(response_json['data']).options
-    print_n_options(options, n)
-    first_n_options = options_to_dict(options, n)
+    first_n_options = print_n_options(options, n)
 
     return first_n_options
 

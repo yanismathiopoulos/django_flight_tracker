@@ -2,42 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/migrations/0002_auto_20200426_1324.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kiwi_cache.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/to_delete.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/airlines.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/first_exploration.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run_functions.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/static/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/enter_two_digits.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flight_tracker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_flight_tracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_flight_tracker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/logged_out.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_complete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_done.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_email.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,8 +100,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/home/templates" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../flight_price_tracker" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -178,7 +155,10 @@
       <workItem from="1586769022797" duration="27639000" />
       <workItem from="1587025741494" duration="1797000" />
       <workItem from="1587832400550" duration="846000" />
-      <workItem from="1587836383601" duration="21760000" />
+      <workItem from="1587836383601" duration="24232000" />
+      <workItem from="1588093503614" duration="23000" />
+      <workItem from="1588093577158" duration="43000" />
+      <workItem from="1588094561137" duration="17419000" />
     </task>
     <servers />
   </component>
@@ -189,24 +169,38 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588093518373">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588093518373" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587911527831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587911527831" />
-    <state x="289" y="287" key="FileChooserDialogImpl" timestamp="1587912685255">
+    <state x="289" y="287" key="FileChooserDialogImpl" timestamp="1588331411949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="289" y="287" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1586980644737" />
+    <state x="289" y="287" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588331411949" />
     <state x="289" y="298" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586782860470" />
     <state x="289" y="287" key="FileChooserDialogImpl/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587912685255" />
-    <state x="0" y="182" key="SettingsEditor" timestamp="1586769165849">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="0" y="182" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586769165849" />
-    <state x="179" y="120" width="1256" height="829" key="find.popup" timestamp="1587913506997">
+    <state x="0" y="175" key="SettingsEditor" timestamp="1588344944570">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="0" y="175" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588344944570" />
+    <state x="0" y="182" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586769165849" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588344956541">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588344956541" />
+    <state x="179" y="120" width="1256" height="829" key="find.popup" timestamp="1588346446112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="179" y="120" width="1256" height="829" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588346446112" />
     <state x="179" y="125" width="1256" height="860" key="find.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586784738379" />
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587913506997" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588344925670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588344925670" />
   </component>
 </project>
