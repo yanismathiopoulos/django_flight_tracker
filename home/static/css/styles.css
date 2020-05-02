@@ -1,33 +1,56 @@
 body {
-    background-color: lightgoldenrodyellow;
-    /*background-color: lightcyan;*/
+    background-color: #110a36;
+    color: #add1ea;
 }
 
-/*table {*/
-/*  display: table;*/
-/*  border-collapse: separate;*/
-/*  border-spacing: 2px;*/
-/*  border-color: gray;*/
+/*h1 a, h2 a {*/
+/*    color: #2f74a0;*/
 /*}*/
 
-h1 a, h2 a {
-    color: darkolivegreen;
-}
-
 /*TODO cell input color*/
-/*name tables and different colors*/
 
-table, th, td {
-    background-color: lightgreen;
-    color: black;
-    border: 1px solid darkolivegreen;
+table.input_form_table {
+    /*color: #4890bb;*/
+    /*border: 1px solid #2f74a0;*/
+    background-color: #2c376d;
+    /*width: 100%;*/
+    text-align: left;
+    /*border-collapse: collapse;*/
 }
 
-table {
+table.input_form_table td, table.input_form_table th {
+    /*color: #2f74a0;*/
+    border: 1px solid #2f74a0;
+    padding: 3px 2px;
+}
+
+table.result_table {
+    /*color: white;*/
+    /*display: table;*/
+    /*border-collapse: separate;*/
+    /*border-spacing: 2px;*/
+    /*background-color: lightgreen;*/
+    /*color: black;*/
+    /*display: table;*/
+    /*border-spacing: 2px;*/
     width: 600px;
 }
 
-td {
+td.airlines_cell {
+    /*color: #2f74a0;*/
+    /*border-spacing: 20px;*/
+    padding-left: 20px;
+    text-align: left;
+    /*column-span: 3;*/
+}
+
+table.result_table, th, td {
+    background-color: #010c55;
+    /*color: #2f74a0;*/
+    border: 1px solid #2f74a0;
+}
+
+table.result_table, td {
     height: 50px;
     text-align: center;
 }

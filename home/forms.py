@@ -24,8 +24,8 @@ class RoundTripForm(forms.Form):
     nights_in_dst_from = forms.IntegerField(label='Nights in destination from', initial=5)
     nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15)
     max_fly_duration = forms.IntegerField(label='Max of flight duration (in hours)', initial=25)
-    selected_cabins = forms.CharField(label='Cabin', initial='M',
-                                      help_text="M (economy), W (economy premium), C (business), F (first class)")
+    selected_cabins = forms.CharField(label='Cabin', initial='M')
+                                      # help_text="M (economy), W (economy premium), C (business), F (first class)")
     # partner_market = 'es'
     # locale = 'us'
     # curr = 'EUR'

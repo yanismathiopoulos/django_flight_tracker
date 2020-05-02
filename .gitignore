@@ -128,12 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# ignored manually
-kiwi_cache.sqlite
-out.txt
-
 # jupyter notebooks
 .ipynb
 .ipynb_checkpoints
+
+# ignored manually
+kiwi_cache.sqlite
 /send_email/credentials.json
 /send_email/
+general_todo.md

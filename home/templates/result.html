@@ -1,9 +1,11 @@
 {% extends "base_generic.html" %}
 
-{ % form_object % }
-{ % form_object_cleaned_data % }
+
 
 {% block content %}
+
+    {#    { % form_object % }#}
+    {#    { % form_object_cleaned_data % }#}
 
 
     {#    <script>#}
@@ -21,18 +23,14 @@
     {% for option_num, option_dict in content.items %}
 
         {#        <table style="background-color:lightgreen">#}
-        <table>
+        <table class="result_table">
 
             <tr>
-                <td><a href="{{ option_dict.link }}" target="_blank">Option {{ option_num }}</a></td>
+                <td class="result_table_cell"><a href="{{ option_dict.link }}" target="_blank">Option {{ option_num }}</a></td>
                 <td>{{ option_dict.price }}€</td>
                 <td>{{ option_dict.duration_total }}</td>
             </tr>
 
-        </table>
-        <br>
-
-        <table>
             <tr>
                 <td> {{ option_dict.outbound.departure_time }} </td>
                 <td> {{ option_dict.outbound.duration }} </td>
@@ -46,14 +44,9 @@
             </tr>
 
             <tr>
-                <td colspan="3" style="text-align:left;"> airline(s): {{ option_dict.outbound.lst_airlines }} </td>
+                <td class="airlines_cell" colspan="3"> airline(s): {{ option_dict.outbound.lst_airlines }} </td>
             </tr>
 
-
-        </table>
-        <br>
-
-        <table>
             <tr>
                 <td> {{ option_dict.inbound.departure_time }} </td>
                 <td> {{ option_dict.inbound.duration }} </td>
@@ -67,28 +60,10 @@
             </tr>
 
             <tr>
-                <td colspan="3" style="text-align:left;"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
+                <td class="airlines_cell" colspan="3"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
             </tr>
+
         </table>
-        <br>
-
-        {#            {% for key, value in option_dict.inbound.items %}#}
-        {#                <tr>#}
-        {#                    <th> {{ key }} </th>#}
-        {#                    <td> {{ value }} </td>#}
-        {#                </tr>#}
-        {#            {% endfor %}#}
-
-        {#        {% for route_key, route_value in option_dict.items %}#}
-        {##}
-        {#           <tr>#}
-        {#                <th> {{ route_key }} </th>#}
-        {#                <td> {{ route_value }} </td>#}
-        {#           </tr>#}
-        {##}
-        {#        {% endfor %}#}
-
-
 
         <br>
         <br>
