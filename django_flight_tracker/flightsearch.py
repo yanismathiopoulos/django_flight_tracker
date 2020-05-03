@@ -9,13 +9,11 @@ import sys
 from contextlib import redirect_stdout
 
 
-def download_data(apikey, parameters):
+def download_data(apikey, api, parameters, cache_expire_after=3600):
     inputs_str = urlencode(parameters)
-
-    url = "https://kiwicom-prod.apigee.net/v2/search?" + 'apikey=' + apikey + '&' + inputs_str
-
+    url = api + 'apikey=' + apikey + '&' + inputs_str
     print("Getting the data...")
-    requests_cache.install_cache(cache_name='kiwi_cache', backend='sqlite', expire_after=3600)
+    requests_cache.install_cache(cache_name='kiwi_cache', backend='sqlite', expire_after=cache_expire_after)
     response = requests.get(url)
 
     if response.from_cache:
@@ -149,7 +147,8 @@ def airline_name(airline_code):
     return air_name
 
 
-def print_n_options(options, n):
+def print_n_options(flight_type, options, n, apikey):
+
     d = dict()
     for i in range(1, min(len(options), n + 1)):
         d[i] = dict()
@@ -161,69 +160,179 @@ def print_n_options(options, n):
         print('price: ', d[i]['price'])
         d[i]['duration_total'] = to_hm(options[i].duration_total)
         print('total duration: ', d[i]['duration_total'])
+        print('\n')
 
-        for x, y, z in zip(['outbound', 'inbound'],
-                           [options[i].duration_outbound, options[i].duration_inbound],
-                           [options[i].outbound, options[i].inbound]
-                           ):
+        if flight_type == 'round':
+
+            for x, y, z in zip(['outbound', 'inbound'],
+                               [options[i].duration_outbound, options[i].duration_inbound],
+                               [options[i].outbound, options[i].inbound]
+                               ):
+
+                d[i][x] = dict()
+                d[i][x]['duration'] = to_hm(y)
+                print('{} (duration: {})'.format(x, d[i][x]))
+
+                d[i][x]['lst_airlines'] = []
+                for j in range(len(z.flights)):
+                    a_n = airline_name(z.flights[j].airline)
+                    d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
+                        'lst_airlines']
+
+                print('airlines: ', d[i][x]['lst_airlines'])
+
+                d[i][x]['from'] = z.flights[0].flyFrom
+                print('from: ', d[i][x]['from'])
+
+                d[i][x]['lst_stops'] = []
+                for v in range(len(z.flights[:-1])):  # ignore first and last
+                    d[i][x]['lst_stops'].append(
+                        to_location_name(apikey,
+                                         z.flights[v].flyTo
+                                         )
+                    )
+
+                print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
+
+                d[i][x]['to'] = z.flights[-1].flyTo
+                print('to: ', d[i][x]['to'])
+
+                d[i][x]['departure_time'] = \
+                    dt.datetime.strftime(
+                        dt.datetime.strptime(
+                            z.flights[0].local_departure,  # first departure time
+                            '%Y-%m-%dT%H:%M:%S.000Z'
+                        ),
+                        '%a %d-%b-%Y %H:%M')
+
+                print('departure time: ', d[i][x]['departure_time'])
+
+                d[i][x]['arrival_time'] = \
+                    dt.datetime.strftime(
+                        dt.datetime.strptime(
+                            z.flights[-1].local_arrival,  # last arrival time
+                            '%Y-%m-%dT%H:%M:%S.000Z'
+                        ),
+                        '%a %d-%b-%Y %H:%M')
+
+                print('arrival time: ', d[i][x]['arrival_time'])
 
             print('\n')
-            d[i][x] = dict()
-            d[i][x]['duration'] = to_hm(y)
-            print('{} (duration: {})'.format(x, d[i][x]))
+            print('\n')
 
-            d[i][x]['lst_airlines'] = []
-            for j in range(len(z.flights)):
-                a_n = airline_name(z.flights[j].airline)
-                d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x]['lst_airlines']
+        elif flight_type == 'oneway':
 
-            print('airlines: ', d[i][x]['lst_airlines'])
+            for x, y, z in zip(['outbound'],
+                               [options[i].duration_outbound],
+                               [options[i].outbound]
+                               ):
 
-            d[i][x]['from'] = z.flights[0].flyFrom
-            print('from: ', d[i][x]['from'])
+                # TODO remove duplicated code
+                d[i][x] = dict()
+                d[i][x]['duration'] = to_hm(y)
+                print('{} (duration: {})'.format(x, d[i][x]))
 
-            d[i][x]['lst_stops'] = []
-            for v in range(len(z.flights[:-1])):  # ignore first and last
-                d[i][x]['lst_stops'].append(z.flights[v].flyTo)
+                d[i][x]['lst_airlines'] = []
+                for j in range(len(z.flights)):
+                    a_n = airline_name(z.flights[j].airline)
+                    d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
+                        'lst_airlines']
 
-            print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
+                print('airlines: ', d[i][x]['lst_airlines'])
 
-            d[i][x]['to'] = z.flights[-1].flyTo
-            print('to: ', d[i][x]['to'])
+                d[i][x]['from'] = z.flights[0].flyFrom
+                print('from: ', d[i][x]['from'])
 
-            d[i][x]['departure_time'] = \
-                dt.datetime.strftime(
-                    dt.datetime.strptime(
-                        z.flights[0].local_departure,  # first departure time
-                        '%Y-%m-%dT%H:%M:%S.000Z'
-                    ),
-                    '%a %d-%b-%Y %H:%M')
+                d[i][x]['lst_stops'] = []
+                for v in range(len(z.flights[:-1])):  # ignore first and last
+                    d[i][x]['lst_stops'].append(
+                        to_location_name(apikey,
+                                         z.flights[v].flyTo
+                                         )
+                    )
 
-            print('departure time: ', d[i][x]['departure_time'])
+                print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
 
-            d[i][x]['arrival_time'] = \
-                dt.datetime.strftime(
-                    dt.datetime.strptime(
-                        z.flights[-1].local_arrival,  # last arrival time
-                        '%Y-%m-%dT%H:%M:%S.000Z'
-                    ),
-                    '%a %d-%b-%Y %H:%M')
+                d[i][x]['to'] = z.flights[-1].flyTo
+                print('to: ', d[i][x]['to'])
 
-            print('arrival time: ', d[i][x]['arrival_time'])
+                d[i][x]['departure_time'] = \
+                    dt.datetime.strftime(
+                        dt.datetime.strptime(
+                            z.flights[0].local_departure,  # first departure time
+                            '%Y-%m-%dT%H:%M:%S.000Z'
+                        ),
+                        '%a %d-%b-%Y %H:%M')
 
-        print('\n')
-        print('\n')
+                print('departure time: ', d[i][x]['departure_time'])
+
+                d[i][x]['arrival_time'] = \
+                    dt.datetime.strftime(
+                        dt.datetime.strptime(
+                            z.flights[-1].local_arrival,  # last arrival time
+                            '%Y-%m-%dT%H:%M:%S.000Z'
+                        ),
+                        '%a %d-%b-%Y %H:%M')
+
+                print('arrival time: ', d[i][x]['arrival_time'])
+
+            print('\n')
+            print('\n')
+
+        else:
+            pass
 
     return d
 
 
-def search(apikey, parameters, n):
-    response_json = download_data(apikey, parameters)
+def to_iata_code(apikey, location_name):
+    # inputs_location = {
+    # 'term': 'rhodes',
+    # 'locale': 'en-US',
+    # 'limit': 10,
+    # 'active_only': 'true'
+    # }
+
+    inputs_location = dict()
+    inputs_location['term'] = location_name
+
+    response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/locations/query?",
+                                  parameters=inputs_location, cache_expire_after=3600 * 24 * 7)
+
+    if not response_json['locations']:
+        print("No results found for this location")
+        iata_code = None
+    else:
+        iata_code = response_json['locations'][0]['code']  # the first result
+    return iata_code
+
+
+def to_location_name(apikey, iata_code):
+    inputs_location = dict()
+    inputs_location['term'] = iata_code
+
+    response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/locations/query?",
+                                  parameters=inputs_location, cache_expire_after=3600 * 24 * 7)
+
+    if not response_json['locations']:
+        print("No results found for this location")
+        location_name = None
+    else:
+        location_name = response_json['locations'][0]['city']['name']  # the first result
+
+    return location_name
+
+
+def search(flight_type, apikey, parameters, n):
+    parameters['fly_from'] = to_iata_code(apikey, parameters['fly_from'])
+    parameters['fly_to'] = to_iata_code(apikey, parameters['fly_to'])
+    response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/v2/search?",
+                                  parameters=parameters, cache_expire_after=3600)
     if response_json is not None:
         options = ResponseData(response_json['data']).options
         # save_stdout = sys.stdout
         # sys.stdout = io.BytesIO()
-        first_n_options = print_n_options(options, n)
+        first_n_options = print_n_options(flight_type, options, n, apikey)
         # TODO suppress print
         # sys.stdout = save_stdout
         # print("captured_stdout", sys.stdout)

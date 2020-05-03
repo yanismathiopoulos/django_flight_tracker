@@ -14,19 +14,25 @@ def index(request):
         form = RoundTripForm(request.POST)
         if form.is_valid():
 
-            print(form)
-            print(form.cleaned_data)
+            parameters = {k: v for (k, v) in form.cleaned_data.items() if
+                          k not in ('apikey', 'num_results') and
+                          v is not None}
 
-            apikey = form.cleaned_data['apikey']
-            del form.cleaned_data['apikey']  # TODO: find a better way
-            parameters = form.cleaned_data
-            content = search(apikey=apikey, parameters=parameters, n=10)
-            if content is not None:
-                r = render(request, 'result.html', context={'content': content,
-                                                            'form_object': form,
-                                                            'form_object_cleaned_data': form.cleaned_data})
+            content = search(flight_type=form.cleaned_data['flight_type'],
+                             apikey=form.cleaned_data['apikey'],
+                             n=form.cleaned_data['num_results'],
+                             parameters=parameters)
+
+            print(content)
+
+            if content is None:
+                r = render(request, 'unsuccessful_request.html',
+                           context={'message': 'Oops, your inputs were not valid, try again!'})
+            elif content == {}:
+                r = render(request, 'unsuccessful_request.html',
+                           context={'message': 'There are no results with these inputs'})
             else:
-                r = render(request, 'unsuccessful_request.html')
+                r = render(request, 'result.html', context={'content': content})
 
             return r
 
@@ -39,4 +45,3 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable.
     return render(request, 'index.html', context={'form': form, 'num_visits': num_visits})
-

@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/general_todo.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/static/images/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/static/images/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/static/images/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/static/images/4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/debug.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/unsuccessful_request.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/unsuccessful_request.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testrun.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/testrun.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +56,18 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker" />
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates\home" />
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\django_flight_tracker" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\templates" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\catalog" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\catalog\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\static\images" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates\home" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -105,7 +112,8 @@
       <workItem from="1588093503614" duration="23000" />
       <workItem from="1588093577158" duration="43000" />
       <workItem from="1588094561137" duration="26277000" />
-      <workItem from="1588372058136" duration="11962000" />
+      <workItem from="1588372058136" duration="18020000" />
+      <workItem from="1588503109639" duration="11472000" />
     </task>
     <servers />
   </component>
@@ -158,6 +166,10 @@
     </state>
     <state x="80" y="195" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588415061803" />
     <state x="0" y="182" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586769165849" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1588514490100">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1588514490100" />
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588344956541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -172,9 +184,10 @@
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588413666104" />
     <state x="179" y="125" width="1256" height="860" key="find.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586784738379" />
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587913506997" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588373663932">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1588515626734">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588515626734" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588373663932" />
   </component>
 </project>
