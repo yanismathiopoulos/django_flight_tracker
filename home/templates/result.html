@@ -26,10 +26,12 @@
         <table class="result_table">
 
             <tr>
-                <td class="result_table_cell"><a href="{{ option_dict.link }}" target="_blank">Option {{ option_num }}</a></td>
+                <td class="result_table_cell"><a href="{{ option_dict.link }}"
+                                                 target="_blank">Option {{ option_num }}</a></td>
                 <td>{{ option_dict.price }}€</td>
                 <td>{{ option_dict.duration_total }}</td>
             </tr>
+
 
             <tr>
                 <td> {{ option_dict.outbound.departure_time }} </td>
@@ -62,6 +64,7 @@
             <tr>
                 <td class="airlines_cell" colspan="3"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
             </tr>
+
 
         </table>
 

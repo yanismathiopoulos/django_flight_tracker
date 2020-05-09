@@ -2,7 +2,8 @@ body {
     background-color: #232226;
     color: #add1ea;
     padding-left: 80px;
-    background-image: url('../images/4.jpg');
+
+    /*background-image: url('../images/4.jpg');*/
 }
 
 /*h1 a, h2 a {*/
@@ -18,6 +19,11 @@ table.input_form_table {
     /*width: 100%;*/
     text-align: left;
     /*border-collapse: collapse;*/
+}
+
+.home_input_form {
+    padding-right: 1200px;
+    color: #2c376d;
 }
 
 table.input_form_table, td, th {

@@ -32,7 +32,10 @@ def index(request):
                 r = render(request, 'unsuccessful_request.html',
                            context={'message': 'There are no results with these inputs'})
             else:
-                r = render(request, 'result.html', context={'content': content})
+                r = render(request, 'result.html',
+                           context={
+                               'content': content
+                           })
 
             return r
 

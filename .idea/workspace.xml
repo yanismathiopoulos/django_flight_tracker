@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/home/static/images/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/static/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/static/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/static/images/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/widgets/bootstrap_datetimepicker.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/widgets/xdsoft_datetimepicker.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/widgets.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/debug.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_flight_tracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/unsuccessful_request.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/unsuccessful_request.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testrun.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/testrun.ipynb" afterDir="false" />
     </list>
@@ -30,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -48,26 +48,28 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../flight_price_tracker" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/snowflakeasp9" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\widgets" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\static\images" />
+      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\django_flight_tracker" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\templates" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\catalog" />
       <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\catalog\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\static\images" />
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker" />
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates\home" />
-      <recent name="C:\Users\yanis\PersonalProjects\django_flight_tracker\home\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -113,7 +115,10 @@
       <workItem from="1588093577158" duration="43000" />
       <workItem from="1588094561137" duration="26277000" />
       <workItem from="1588372058136" duration="18020000" />
-      <workItem from="1588503109639" duration="11472000" />
+      <workItem from="1588503109639" duration="13481000" />
+      <workItem from="1588703129595" duration="573000" />
+      <workItem from="1588703722705" duration="1255000" />
+      <workItem from="1589025611888" duration="11913000" />
     </task>
     <servers />
   </component>
@@ -142,10 +147,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588357264424" />
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588372389778">
+    <state x="552" y="181" key="#Plugins" timestamp="1588703035556">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588372389778" />
+    <state x="552" y="181" key="#Plugins/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703035556" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588703153767">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703153767" />
     <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588093518373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -155,16 +164,65 @@
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588363794285" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587911527831" />
-    <state x="289" y="287" key="FileChooserDialogImpl" timestamp="1588331411949">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="231" y="227" key="FileChooserDialogImpl" timestamp="1589026032034">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="289" y="287" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588331411949" />
+    <state x="231" y="227" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589026032034" />
+    <state x="289" y="287" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588578224624" />
     <state x="289" y="298" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586782860470" />
     <state x="289" y="287" key="FileChooserDialogImpl/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587912685255" />
-    <state x="80" y="195" key="SettingsEditor" timestamp="1588415061803">
+    <state width="938" height="348" key="GridCell.Tab.0.bottom" timestamp="1588703613546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="80" y="195" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588415061803" />
+    <state width="938" height="348" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613546" />
+    <state width="938" height="348" key="GridCell.Tab.0.center" timestamp="1588703613546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613546" />
+    <state width="938" height="348" key="GridCell.Tab.0.left" timestamp="1588703613546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613546" />
+    <state width="938" height="348" key="GridCell.Tab.0.right" timestamp="1588703613546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613546" />
+    <state width="938" height="348" key="GridCell.Tab.1.bottom" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.1.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.1.center" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.1.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.1.left" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.1.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.1.right" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.1.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.2.bottom" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.2.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.2.center" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.2.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.2.left" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.2.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state width="938" height="348" key="GridCell.Tab.2.right" timestamp="1588703613547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="938" height="348" key="GridCell.Tab.2.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703613547" />
+    <state x="80" y="195" key="SettingsEditor" timestamp="1588703702998">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="80" y="195" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703702998" />
     <state x="0" y="182" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586769165849" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1588514490100">
       <screen x="0" y="0" width="1536" height="824" />
@@ -178,16 +236,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1178" y="401" width="686" height="498" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588417224100" />
-    <state x="179" y="120" width="1256" height="829" key="find.popup" timestamp="1588413666104">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="143" y="23" width="1005" height="801" key="find.popup" timestamp="1589040621168">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="143" y="23" width="1005" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589040621168" />
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588413666104" />
     <state x="179" y="125" width="1256" height="860" key="find.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586784738379" />
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587913506997" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1588515626734">
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1589035897542">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588515626734" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588373663932" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589035897542" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703504463" />
   </component>
 </project>
