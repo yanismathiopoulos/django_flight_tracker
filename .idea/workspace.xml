@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/home/templates/widgets/bootstrap_datetimepicker.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/widgets/xdsoft_datetimepicker.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/widgets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Yanis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_flight_tracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testrun.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/testrun.ipynb" afterDir="false" />
     </list>
@@ -118,7 +114,7 @@
       <workItem from="1588503109639" duration="13481000" />
       <workItem from="1588703129595" duration="573000" />
       <workItem from="1588703722705" duration="1255000" />
-      <workItem from="1589025611888" duration="11913000" />
+      <workItem from="1589025611888" duration="19381000" />
     </task>
     <servers />
   </component>
@@ -243,10 +239,10 @@
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588413666104" />
     <state x="179" y="125" width="1256" height="860" key="find.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1586784738379" />
     <state x="179" y="120" width="1256" height="829" key="find.popup/1920.139.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587913506997" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1589035897542">
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1589055465753">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589035897542" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589055465753" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1588703504463" />
   </component>
 </project>

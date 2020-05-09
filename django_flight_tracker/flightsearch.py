@@ -148,7 +148,6 @@ def airline_name(airline_code):
 
 
 def print_n_options(flight_type, options, n, apikey):
-
     d = dict()
     for i in range(1, min(len(options), n + 1)):
         d[i] = dict()
@@ -323,9 +322,32 @@ def to_location_name(apikey, iata_code):
     return location_name
 
 
+def transform_parameters(apikey, parameters):
+    for k in ['fly_from', 'fly_to']:
+        if k in parameters:
+            parameters[k] = to_iata_code(apikey, parameters[k])
+
+    for k in ['date_from', 'date_to', 'return_from', 'return_to']:
+        if k in parameters:
+            # print(parameters[k], type(parameters[k]))
+            if isinstance(parameters[k], dt.datetime):
+                try:
+
+                    # parameters[k] = dt.datetime.strptime(
+                    #     parameters[k], '%Y-%m-%d %H:%M:%S'
+                    # ).strftime('%d/%m/%Y')
+
+                    parameters[k] = parameters[k].strftime('%d/%m/%Y')
+
+                except ValueError:
+                    pass
+
+    return parameters
+
+
 def search(flight_type, apikey, parameters, n):
-    parameters['fly_from'] = to_iata_code(apikey, parameters['fly_from'])
-    parameters['fly_to'] = to_iata_code(apikey, parameters['fly_to'])
+    parameters = transform_parameters(apikey, parameters)
+
     response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/v2/search?",
                                   parameters=parameters, cache_expire_after=3600)
     if response_json is not None:

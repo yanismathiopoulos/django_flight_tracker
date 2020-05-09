@@ -137,3 +137,4 @@ kiwi_cache.sqlite
 /send_email/credentials.json
 /send_email/
 general_todo.md
+test.py

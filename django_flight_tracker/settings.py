@@ -109,9 +109,9 @@ TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False  # changed to False so it doesn't override the date format
 
-USE_TZ = True
+USE_TZ = False  # changed to False so it doesn't override the date format
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -127,3 +127,5 @@ BOOTSTRAP4 = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+

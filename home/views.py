@@ -12,15 +12,21 @@ def index(request):
 
     if request.method == 'POST':
         form = RoundTripForm(request.POST)
+
         if form.is_valid():
 
-            parameters = {k: v for (k, v) in form.cleaned_data.items() if
+            form = form.clean()
+
+            parameters = {k: v for (k, v) in form.items() if
                           k not in ('apikey', 'num_results') and
                           v is not None}
 
-            content = search(flight_type=form.cleaned_data['flight_type'],
-                             apikey=form.cleaned_data['apikey'],
-                             n=form.cleaned_data['num_results'],
+            # print('not clean', form['date_from'])
+            print('clean', form['date_from'])
+
+            content = search(flight_type=form['flight_type'],
+                             apikey=form['apikey'],
+                             n=form['num_results'],
                              parameters=parameters)
 
             print(content)

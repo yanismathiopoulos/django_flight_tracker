@@ -3,36 +3,33 @@ body {
     color: #add1ea;
     padding-left: 80px;
 
-    /*background-image: url('../images/4.jpg');*/
+    background-image: url('../images/4.jpg');
 }
 
 /*h1 a, h2 a {*/
 /*    color: #2f74a0;*/
 /*}*/
 
-/*TODO cell input color*/
-
-table.input_form_table {
-    /*color: #4890bb;*/
-    /*border: 1px solid #2f74a0;*/
-    background-color: #2c376d;
-    /*width: 100%;*/
-    text-align: left;
-    /*border-collapse: collapse;*/
-}
 
 .home_input_form {
     padding-right: 1200px;
-    color: #2c376d;
+    /*color: #2c376d;*/
 }
 
-table.input_form_table, td, th {
-    /*color: #2f74a0;*/
-    border: 1px solid #2f74a0;
-    /*padding: 3px 2px;*/
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+    /*background-color: green;*/
+    /*color: salmon;*/
 }
 
-table.result_table {
+
+.result_table table {
     /*color: white;*/
     /*display: table;*/
     /*border-collapse: separate;*/
@@ -44,7 +41,8 @@ table.result_table {
     width: 600px;
 }
 
-td.airlines_cell {
+.airlines_cell table,
+.airlines_cell td {
     /*color: #2f74a0;*/
     /*border-spacing: 20px;*/
     padding-left: 20px;
@@ -52,13 +50,16 @@ td.airlines_cell {
     /*column-span: 3;*/
 }
 
-table.result_table, th, td {
+.result_table table,
+.result_table th,
+.result_table td {
     background-color: #1a1717;
     /*color: #2f74a0;*/
     border: 1px solid #2f74a0;
 }
 
-table.result_table, td {
+.result_table table,
+.result_table td {
     height: 50px;
     text-align: center;
 }

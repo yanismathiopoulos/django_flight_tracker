@@ -9,6 +9,12 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div
 from django.urls import reverse
 
+datepicker_widget = DatePickerInput(
+    options={'format': 'DD/MM/YYYY',  # moment date-time format
+             'showClose': True,
+             'showClear': True,
+             'showTodayButton': True})
+
 
 class RoundTripForm(forms.Form):
     """Form for a user to give inputs for a round trip."""
@@ -29,38 +35,25 @@ class RoundTripForm(forms.Form):
 
     fly_from = forms.CharField(label='From', initial='kalamata')  # TODO search using city name instead of code
     fly_to = forms.CharField(label='To', initial='bogota')
-    # date_from = forms.CharField(label='Date From', initial='15/06/2020')
-    date_from = forms.DateTimeField(
-        label='Date From',
-        initial='15/06/2020',
-        input_formats=['%d/%m/%Y'],
-        widget=DatePickerInput(
-            # format='%d/%m/%Y',
-            options={
-                "format": "DD/MM/YYYY",  # moment date-time format
-                "showClose": True,
-                "showClear": True,
-                "showTodayButton": True,
-            }
-        )
-
-
-        # widget=BootstrapDateTimePickerInput(
-        # attrs={
-        #     'class': 'form-control datetimepicker-input',
-        #     'data-target': '#datetimepicker1'
-        # }
-        # )
-        # widget=XDSoftDateTimePickerInput()
-
-    )
-
-    date_to = forms.CharField(label='Date To', initial='30/09/2020')
-    return_from = forms.CharField(label='Return From', initial='15/06/2020', required=False)
-    return_to = forms.CharField(label='Return To',
-                                # initial=datetime.date.today,
-                                initial='30/09/2020', required=False
-                                )
+    date_from = forms.DateTimeField(label='Date From',
+                                    initial='15/06/2020',
+                                    input_formats=['%d/%m/%Y'],
+                                    widget=datepicker_widget)
+    date_to = forms.DateTimeField(label='Date To',
+                                  initial='30/09/2020',
+                                  input_formats=['%d/%m/%Y'],
+                                  widget=datepicker_widget)
+    return_from = forms.DateTimeField(label='Return From',
+                                      initial='15/06/2020',
+                                      input_formats=['%d/%m/%Y'],
+                                      widget=datepicker_widget,
+                                      required=False)
+    return_to = forms.DateTimeField(label='Return To',
+                                    # initial=datetime.date.today,
+                                    initial='30/09/2020',
+                                    input_formats=['%d/%m/%Y'],
+                                    widget=datepicker_widget,
+                                    required=False)
     nights_in_dst_from = forms.IntegerField(label='Nights in destination from', initial=5, required=False)
     nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15, required=False)
     max_fly_duration = forms.IntegerField(label='Max of flight duration (in hours)', initial=25, required=False)
@@ -79,5 +72,6 @@ class RoundTripForm(forms.Form):
     num_results = forms.IntegerField(label='Return the first x results', initial=5, required=True)
 
     def clean(self):
-        data = self.cleaned_data
+        # data = self.cleaned_data
+        data = super().clean()
         return data
