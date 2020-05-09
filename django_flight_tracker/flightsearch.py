@@ -329,13 +329,8 @@ def transform_parameters(apikey, parameters):
 
     for k in ['date_from', 'date_to', 'return_from', 'return_to']:
         if k in parameters:
-            # print(parameters[k], type(parameters[k]))
             if isinstance(parameters[k], dt.datetime):
                 try:
-
-                    # parameters[k] = dt.datetime.strptime(
-                    #     parameters[k], '%Y-%m-%d %H:%M:%S'
-                    # ).strftime('%d/%m/%Y')
 
                     parameters[k] = parameters[k].strftime('%d/%m/%Y')
 
@@ -346,8 +341,9 @@ def transform_parameters(apikey, parameters):
 
 
 def search(flight_type, apikey, parameters, n):
+    # print(parameters)
     parameters = transform_parameters(apikey, parameters)
-
+    print(parameters)
     response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/v2/search?",
                                   parameters=parameters, cache_expire_after=3600)
     if response_json is not None:

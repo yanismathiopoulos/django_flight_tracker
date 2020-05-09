@@ -34,8 +34,8 @@ class RoundTripForm(forms.Form):
     # flight_type = forms.CharField(label='Flight Type', initial='round', required=False)
     flight_type = forms.ChoiceField(label='Flight Type',
                                     initial='round',
-                                    choices=(("1", "round"),
-                                             ("2", "oneway")))
+                                    choices=(('round', 'Return'),
+                                             ('oneway', 'One way')))
     fly_from = forms.CharField(label='From', initial='kalamata')  # TODO search using city name instead of code
     fly_to = forms.CharField(label='To', initial='bogota')
     date_from = forms.DateTimeField(label='Date From',
@@ -61,11 +61,10 @@ class RoundTripForm(forms.Form):
     nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15, min_value=0, required=False)
     max_fly_duration = forms.IntegerField(label='Max of flight duration (in hours)', initial=25, min_value=0, required=False)
     selected_cabins = forms.ChoiceField(label='Cabin', initial='M',
-                                        choices=(('1', 'M'),
-                                                 ('2', 'W'),
-                                                 ('3', 'C'),
-                                                 ('4', 'F')))  # TODO separate label with input
-    # help_text="M (economy), W (economy premium), C (business), F (first class)")
+                                        choices=(('M', 'Economy'),
+                                                 ('W', 'Economy Premium'),
+                                                 ('C', 'Business'),
+                                                 ('F', 'First Class')))
     # partner_market = 'es'
     # locale = 'us'
     # curr = 'EUR'
@@ -75,10 +74,10 @@ class RoundTripForm(forms.Form):
     # select_airlines =
     # select_airlines_exclude = False
     sort = forms.ChoiceField(label='Sort by', initial='price',
-                             choices=(('1', 'price'),
-                                      ('2', 'duration'),
-                                      ('3', 'quality'),
-                                      ('4', 'date')))
+                             choices=(('price', 'Price'),
+                                      ('duration', 'Duration'),
+                                      ('quality', 'Quality'),
+                                      ('date', 'Date')))
     # asc = 1
     num_results = forms.IntegerField(label='Return the first x results', initial=5, min_value=0, required=True)
 
