@@ -12,7 +12,8 @@ body {
 
 
 .home_input_form {
-    padding-right: 1200px;
+    width: 300px;
+    /*padding-right: 1200px;*/
     /*color: #2c376d;*/
 }
 

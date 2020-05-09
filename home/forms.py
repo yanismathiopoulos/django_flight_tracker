@@ -31,8 +31,11 @@ class RoundTripForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Submit'))
 
     apikey = forms.CharField(label='API Key', initial='hsgRmFhjJRKIzN6o0MEovJXr9VJFxQQh')
-    flight_type = forms.CharField(label='Flight Type', initial='round', required=False)
-
+    # flight_type = forms.CharField(label='Flight Type', initial='round', required=False)
+    flight_type = forms.ChoiceField(label='Flight Type',
+                                    initial='round',
+                                    choices=(("1", "round"),
+                                             ("2", "oneway")))
     fly_from = forms.CharField(label='From', initial='kalamata')  # TODO search using city name instead of code
     fly_to = forms.CharField(label='To', initial='bogota')
     date_from = forms.DateTimeField(label='Date From',
@@ -54,22 +57,30 @@ class RoundTripForm(forms.Form):
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget,
                                     required=False)
-    nights_in_dst_from = forms.IntegerField(label='Nights in destination from', initial=5, required=False)
-    nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15, required=False)
-    max_fly_duration = forms.IntegerField(label='Max of flight duration (in hours)', initial=25, required=False)
-    selected_cabins = forms.CharField(label='Cabin', initial='M', required=False)
+    nights_in_dst_from = forms.IntegerField(label='Nights in destination from', initial=5, min_value=0, required=False)
+    nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15, min_value=0, required=False)
+    max_fly_duration = forms.IntegerField(label='Max of flight duration (in hours)', initial=25, min_value=0, required=False)
+    selected_cabins = forms.ChoiceField(label='Cabin', initial='M',
+                                        choices=(('1', 'M'),
+                                                 ('2', 'W'),
+                                                 ('3', 'C'),
+                                                 ('4', 'F')))  # TODO separate label with input
     # help_text="M (economy), W (economy premium), C (business), F (first class)")
     # partner_market = 'es'
     # locale = 'us'
     # curr = 'EUR'
-    price_from = forms.IntegerField(label='Price from', initial=0, required=False)
-    price_to = forms.IntegerField(label='Price to', initial=1200, required=False)
-    max_stopovers = forms.IntegerField(label='Max stopovers', initial=3, required=False)
+    price_from = forms.IntegerField(label='Price from', initial=0, min_value=0, required=False)
+    price_to = forms.IntegerField(label='Price to', initial=1200, max_value=10000, required=False)
+    max_stopovers = forms.IntegerField(label='Max stopovers', initial=3, min_value=0, required=False)
     # select_airlines =
     # select_airlines_exclude = False
-    sort = forms.CharField(label='Sort by', initial='price', required=False)
+    sort = forms.ChoiceField(label='Sort by', initial='price',
+                             choices=(('1', 'price'),
+                                      ('2', 'duration'),
+                                      ('3', 'quality'),
+                                      ('4', 'date')))
     # asc = 1
-    num_results = forms.IntegerField(label='Return the first x results', initial=5, required=True)
+    num_results = forms.IntegerField(label='Return the first x results', initial=5, min_value=0, required=True)
 
     def clean(self):
         # data = self.cleaned_data

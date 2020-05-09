@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="079bf2e8-9dc7-4f3f-9d93-3fe8c0261c4a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/flightsearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_flight_tracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_flight_tracker/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/home/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/base_generic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testrun.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/testrun.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +107,7 @@
       <workItem from="1588503109639" duration="13481000" />
       <workItem from="1588703129595" duration="573000" />
       <workItem from="1588703722705" duration="1255000" />
-      <workItem from="1589025611888" duration="19381000" />
+      <workItem from="1589025611888" duration="22561000" />
     </task>
     <servers />
   </component>
