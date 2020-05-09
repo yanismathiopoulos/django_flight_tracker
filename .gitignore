@@ -129,11 +129,13 @@ dmypy.json
 .pyre/
 
 # jupyter notebooks
-.ipynb
-.ipynb_checkpoints
+*.ipynb
+*.ipynb_checkpoints
 
 # ignored manually
-kiwi_cache.sqlite
+/data
+.idea
+*.sqlite
 /send_email/credentials.json
 /send_email/
 general_todo.md
