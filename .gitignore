@@ -141,10 +141,10 @@ general_todo.md
 test.py
 
 # need for heroku
-*.sqlite
-/etc/
-/etc/secret_key.txt
-/etc/api_key.txt
-Procfile
+#*.sqlite
+#/etc/
+#/etc/secret_key.txt
+#/etc/api_key.txt
+#Procfile
 
 
