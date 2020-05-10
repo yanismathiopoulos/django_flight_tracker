@@ -133,7 +133,6 @@ dmypy.json
 *.ipynb_checkpoints
 
 # ignored manually
-/data/
 .idea
 /etc/email_credentials.json
 /send_email/
