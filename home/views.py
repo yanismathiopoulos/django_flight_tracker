@@ -15,6 +15,9 @@ def index(request):
 
         if form.is_valid():
 
+            if form['flight_type'] == 'oneway':
+                form.nights_in_dst_from.disabled = True
+
             form = form.clean()
 
             parameters = {k: v for (k, v) in form.items() if

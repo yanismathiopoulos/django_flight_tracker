@@ -75,13 +75,9 @@ class Option:
     """
 
     def __init__(self, option_d):
-        #         TODO: use the first way only for first-level dictionary
-
-        #         For all data on option level:
-        #         for key in option_d:
-        #             setattr(self, key, option_d[key])
-
-        # For selection of data on option level:
+        # For all data on option level:
+        # for key in option_d:
+        #     setattr(self, key, option_d[key])
 
         self.id = option_d['id']
         self.deep_link = option_d['deep_link']
@@ -161,129 +157,69 @@ def print_n_options(flight_type, options, n, apikey):
         print('total duration: ', d[i]['duration_total'])
         print('\n')
 
-        if flight_type == 'round':
+        x_list = ['outbound', 'inbound']
+        y_list = [options[i].duration_outbound, options[i].duration_inbound]
+        z_list = [options[i].outbound, options[i].inbound]
 
-            for x, y, z in zip(['outbound', 'inbound'],
-                               [options[i].duration_outbound, options[i].duration_inbound],
-                               [options[i].outbound, options[i].inbound]
-                               ):
+        if flight_type == 'oneway':  # keep only the outbound objects
+            x_list = [x_list[0]]
+            y_list = [y_list[0]]
+            z_list = [z_list[0]]
 
-                d[i][x] = dict()
-                d[i][x]['duration'] = to_hm(y)
-                print('{} (duration: {})'.format(x, d[i][x]))
+        for x, y, z in zip(x_list, y_list, z_list):
 
-                d[i][x]['lst_airlines'] = []
-                for j in range(len(z.flights)):
-                    a_n = airline_name(z.flights[j].airline)
-                    d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
-                        'lst_airlines']
+            d[i][x] = dict()
+            d[i][x]['duration'] = to_hm(y)
+            print('{} (duration: {})'.format(x, d[i][x]))
 
-                print('airlines: ', d[i][x]['lst_airlines'])
+            d[i][x]['lst_airlines'] = []
+            for j in range(len(z.flights)):
+                a_n = airline_name(z.flights[j].airline)
+                d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
+                    'lst_airlines']
 
-                d[i][x]['from'] = z.flights[0].flyFrom
-                print('from: ', d[i][x]['from'])
+            print('airlines: ', d[i][x]['lst_airlines'])
 
-                d[i][x]['lst_stops'] = []
-                for v in range(len(z.flights[:-1])):  # ignore first and last
-                    d[i][x]['lst_stops'].append(
-                        to_location_name(apikey,
-                                         z.flights[v].flyTo
-                                         )
-                    )
-                if d[i][x]['lst_stops'] == []:
-                    d[i][x]['lst_stops'] = ''
+            d[i][x]['from'] = z.flights[0].flyFrom
+            print('from: ', d[i][x]['from'])
 
-                print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
+            d[i][x]['lst_stops'] = []
+            for v in range(len(z.flights[:-1])):  # ignore first and last
+                d[i][x]['lst_stops'].append(
+                    to_location_name(apikey,
+                                     z.flights[v].flyTo
+                                     )
+                )
+            if d[i][x]['lst_stops'] == []:
+                d[i][x]['lst_stops'] = ''
 
-                d[i][x]['to'] = z.flights[-1].flyTo
-                print('to: ', d[i][x]['to'])
+            print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
 
-                d[i][x]['departure_time'] = \
-                    dt.datetime.strftime(
-                        dt.datetime.strptime(
-                            z.flights[0].local_departure,  # first departure time
-                            '%Y-%m-%dT%H:%M:%S.000Z'
-                        ),
-                        '%a %d-%b-%Y %H:%M')
+            d[i][x]['to'] = z.flights[-1].flyTo
+            print('to: ', d[i][x]['to'])
 
-                print('departure time: ', d[i][x]['departure_time'])
+            d[i][x]['departure_time'] = \
+                dt.datetime.strftime(
+                    dt.datetime.strptime(
+                        z.flights[0].local_departure,  # first departure time
+                        '%Y-%m-%dT%H:%M:%S.000Z'
+                    ),
+                    '%a %d-%b-%Y %H:%M')
 
-                d[i][x]['arrival_time'] = \
-                    dt.datetime.strftime(
-                        dt.datetime.strptime(
-                            z.flights[-1].local_arrival,  # last arrival time
-                            '%Y-%m-%dT%H:%M:%S.000Z'
-                        ),
-                        '%a %d-%b-%Y %H:%M')
+            print('departure time: ', d[i][x]['departure_time'])
 
-                print('arrival time: ', d[i][x]['arrival_time'])
+            d[i][x]['arrival_time'] = \
+                dt.datetime.strftime(
+                    dt.datetime.strptime(
+                        z.flights[-1].local_arrival,  # last arrival time
+                        '%Y-%m-%dT%H:%M:%S.000Z'
+                    ),
+                    '%a %d-%b-%Y %H:%M')
 
-            print('\n')
-            print('\n')
+            print('arrival time: ', d[i][x]['arrival_time'])
 
-        elif flight_type == 'oneway':
-
-            for x, y, z in zip(['outbound'],
-                               [options[i].duration_outbound],
-                               [options[i].outbound]
-                               ):
-
-                # TODO remove duplicated code
-                d[i][x] = dict()
-                d[i][x]['duration'] = to_hm(y)
-                print('{} (duration: {})'.format(x, d[i][x]))
-
-                d[i][x]['lst_airlines'] = []
-                for j in range(len(z.flights)):
-                    a_n = airline_name(z.flights[j].airline)
-                    d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
-                        'lst_airlines']
-
-                print('airlines: ', d[i][x]['lst_airlines'])
-
-                d[i][x]['from'] = z.flights[0].flyFrom
-                print('from: ', d[i][x]['from'])
-
-                d[i][x]['lst_stops'] = []
-                for v in range(len(z.flights[:-1])):  # ignore first and last
-                    d[i][x]['lst_stops'].append(
-                        to_location_name(apikey,
-                                         z.flights[v].flyTo
-                                         )
-                    )
-                if d[i][x]['lst_stops'] == []:
-                    d[i][x]['lst_stops'] = ''
-
-                print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
-
-                d[i][x]['to'] = z.flights[-1].flyTo
-                print('to: ', d[i][x]['to'])
-
-                d[i][x]['departure_time'] = \
-                    dt.datetime.strftime(
-                        dt.datetime.strptime(
-                            z.flights[0].local_departure,  # first departure time
-                            '%Y-%m-%dT%H:%M:%S.000Z'
-                        ),
-                        '%a %d-%b-%Y %H:%M')
-
-                print('departure time: ', d[i][x]['departure_time'])
-
-                d[i][x]['arrival_time'] = \
-                    dt.datetime.strftime(
-                        dt.datetime.strptime(
-                            z.flights[-1].local_arrival,  # last arrival time
-                            '%Y-%m-%dT%H:%M:%S.000Z'
-                        ),
-                        '%a %d-%b-%Y %H:%M')
-
-                print('arrival time: ', d[i][x]['arrival_time'])
-
-            print('\n')
-            print('\n')
-
-        else:
-            pass
+        print('\n')
+        print('\n')
 
     return d
 
@@ -352,12 +288,7 @@ def search(flight_type, apikey, parameters, n):
                                   parameters=parameters, cache_expire_after=3600)
     if response_json is not None:
         options = ResponseData(response_json['data']).options
-        # save_stdout = sys.stdout
-        # sys.stdout = io.BytesIO()
         first_n_options = print_n_options(flight_type, options, n, apikey)
-        # TODO suppress print
-        # sys.stdout = save_stdout
-        # print("captured_stdout", sys.stdout)
     else:
         print("There is no response")
         first_n_options = None

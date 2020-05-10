@@ -85,6 +85,11 @@ class FlightSearchInputForm(forms.Form):
         # self.helper.form_method = 'post'
         # self.helper.form_action = reverse('index')
         # self.helper.add_input(Submit('submit', 'Submit'))
+
+        flight_type = self.fields.get('flight_type')
+        if flight_type == 'oneway':
+            self.fields['nights_in_dst_from'].widget.attrs['disabled'] = 'true'
+
         self.helper.layout = Layout(
             Row(Column('flight_type', css_class='form-group col-md-6 mb-0'),
                 # Column('apikey', css_class='form-group col-md-6 mb-0'),
