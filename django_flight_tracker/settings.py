@@ -20,10 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm$)x82s=m+c034-k&mr05^5)#k2-c9a&7-__nv^f5gf)z^2x#j'
+with open('./etc/secret_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'  # export DJANGO_DEBUG=False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -127,5 +129,3 @@ BOOTSTRAP4 = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-

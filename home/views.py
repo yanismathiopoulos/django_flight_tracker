@@ -3,7 +3,7 @@ from django.views import generic
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
-from .forms import RoundTripForm
+from .forms import FlightSearchInputForm
 from django_flight_tracker.flightsearch import *
 
 
@@ -11,7 +11,7 @@ def index(request):
     """View function for home page of site."""
 
     if request.method == 'POST':
-        form = RoundTripForm(request.POST)
+        form = FlightSearchInputForm(request.POST)
 
         if form.is_valid():
 
@@ -46,7 +46,7 @@ def index(request):
             return r
 
     else:
-        form = RoundTripForm()
+        form = FlightSearchInputForm()
 
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
