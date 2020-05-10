@@ -19,7 +19,7 @@ datepicker_widget = DatePickerInput(
 class FlightSearchInputForm(forms.Form):
     """Form for a user to give inputs for a round trip."""
 
-    apikey = forms.CharField(label='API Key', initial='hsgRmFhjJRKIzN6o0MEovJXr9VJFxQQh')
+    # apikey = forms.CharField(label='API Key', initial='hsgRmFhjJRKIzN6o0MEovJXr9VJFxQQh')
     flight_type = forms.ChoiceField(label='Flight Type',
                                     initial='round',
                                     choices=(('round', 'Return'),
@@ -81,7 +81,7 @@ class FlightSearchInputForm(forms.Form):
         self.helper.layout = Layout(
             Row(
                 Column('flight_type', css_class='form-group col-md-6 mb-0'),
-                Column('apikey', css_class='form-group col-md-6 mb-0'),
+                # Column('apikey', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
             ),
             Row(

@@ -24,8 +24,11 @@ def index(request):
             # print('not clean', form['date_from'])
             print('clean', form['date_from'])
 
+            with open('./etc/api_key.txt') as f:
+                apikey = f.read().strip()
+
             content = search(flight_type=form['flight_type'],
-                             apikey=form['apikey'],
+                             apikey=apikey,
                              n=form['num_results'],
                              parameters=parameters)
 
