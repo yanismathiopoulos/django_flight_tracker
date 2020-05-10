@@ -26,8 +26,8 @@
         <table class="result_table">
 
             <tr>
-                <td class="result_table_cell"><a href="{{ option_dict.link }}"
-                                                 target="_blank">Option {{ option_num }}</a></td>
+                <td><a href="{{ option_dict.link }}"
+                       target="_blank">Option {{ option_num }}</a></td>
                 <td>{{ option_dict.price }}€</td>
                 <td>{{ option_dict.duration_total }}</td>
             </tr>
@@ -41,30 +41,48 @@
 
             <tr>
                 <td> {{ option_dict.outbound.from }} </td>
-                <td> via {{ option_dict.outbound.lst_stops }} </td>
+
+                <td>
+                    {% if option_dict.outbound.lst_stops != '' %}
+                        <p>via </p>
+                    {% else %}
+                        direct
+                    {% endif %}
+                    {{ option_dict.outbound.lst_stops }}
+                </td>
+
                 <td> {{ option_dict.outbound.to }} </td>
             </tr>
 
-            <tr>
-                <td class="airlines_cell" colspan="3"> airline(s): {{ option_dict.outbound.lst_airlines }} </td>
+            <tr class="airlines_cell">
+                <td colspan="3"> airline(s): {{ option_dict.outbound.lst_airlines }} </td>
             </tr>
 
-            <tr>
-                <td> {{ option_dict.inbound.departure_time }} </td>
-                <td> {{ option_dict.inbound.duration }} </td>
-                <td> {{ option_dict.inbound.arrival_time }} </td>
-            </tr>
+            {% if option_dict.inbound %}
 
-            <tr>
-                <td> {{ option_dict.inbound.from }} </td>
-                <td> via {{ option_dict.inbound.lst_stops }} </td>
-                <td> {{ option_dict.inbound.to }} </td>
-            </tr>
+                <tr>
+                    <td> {{ option_dict.inbound.departure_time }} </td>
+                    <td> {{ option_dict.inbound.duration }} </td>
+                    <td> {{ option_dict.inbound.arrival_time }} </td>
+                </tr>
 
-            <tr>
-                <td class="airlines_cell" colspan="3"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
-            </tr>
+                <tr>
+                    <td> {{ option_dict.inbound.from }} </td>
+                    <td>
+                        {% if option_dict.inbound.lst_stops != '' %}
+                            via {{ option_dict.inbound.lst_stops }}
+                        {% else %}
+                            direct
+                        {% endif %}
+                    </td>
+                    <td> {{ option_dict.inbound.to }} </td>
+                </tr>
 
+                <tr class="airlines_cell">
+                    <td colspan="3"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
+                </tr>
+
+            {% endif %}
 
         </table>
 

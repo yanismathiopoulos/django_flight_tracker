@@ -190,6 +190,8 @@ def print_n_options(flight_type, options, n, apikey):
                                          z.flights[v].flyTo
                                          )
                     )
+                if d[i][x]['lst_stops'] == []:
+                    d[i][x]['lst_stops'] = ''
 
                 print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
 
@@ -249,6 +251,8 @@ def print_n_options(flight_type, options, n, apikey):
                                          z.flights[v].flyTo
                                          )
                     )
+                if d[i][x]['lst_stops'] == []:
+                    d[i][x]['lst_stops'] = ''
 
                 print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
 

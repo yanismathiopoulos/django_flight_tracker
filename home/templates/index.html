@@ -2,11 +2,9 @@
 
 {% block content %}
 
-    <p>Welcome to <em>Flight Tracker</em>, a very basic Django website developed to track flight prices using <a
-            href="https://www.kiwi.com/en/">kiwis api</a> for searching flights.</p>
-
-
-
+    <p>You like having all the options, don't you?</p>
+    <p>Welcome to <em>searchflights.herokuapp.com</em>, a website developed to track flight prices using <a
+            href="https://www.kiwi.com/en/" target="_blank">kiwi's api</a>.</p>
 
     {#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous"#}
     {#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet"/>#}
@@ -32,7 +30,9 @@
 
     {% crispy form %}
 
-    <p>You have visited this page {{ num_visits }} times.</p>
+    {#    <p>You have visited this page {{ num_visits }} times.</p>#}
+    <br>
+    <div class="developed_by_footer"><p>Developed by Yanis in Django, hosted by Heroku. 2020</p></div>
 
 {% endblock %}
 

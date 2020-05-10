@@ -21,9 +21,6 @@ def index(request):
                           k not in ('apikey', 'num_results') and
                           v is not None}
 
-            # print('not clean', form['date_from'])
-            print('clean', form['date_from'])
-
             with open('./etc/api_key.txt') as f:
                 apikey = f.read().strip()
 

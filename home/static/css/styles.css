@@ -2,8 +2,11 @@ body {
     background-color: #232226;
     color: #add1ea;
     padding-left: 80px;
-
     background-image: url('../images/4.jpg');
+}
+
+.developed_by_footer p {
+    font-size: small;
 }
 
 /*h1 a, h2 a {*/
@@ -38,28 +41,28 @@ body {
     /*color: black;*/
     /*display: table;*/
     /*border-spacing: 2px;*/
-    width: 600px;
-}
-
-.airlines_cell table,
-.airlines_cell td {
-    /*color: #2f74a0;*/
-    /*border-spacing: 20px;*/
-    padding-left: 20px;
-    text-align: left;
-    /*column-span: 3;*/
-}
-
-.result_table table,
-.result_table th,
-.result_table td {
-    background-color: #1a1717;
-    /*color: #2f74a0;*/
+    background-color: #191f24;
+    /*padding-left: 20px;*/
+    padding: 30px;
     border: 1px solid #2f74a0;
 }
 
-.result_table table,
-.result_table td {
-    height: 50px;
+.result_table td,
+.result_table th,
+.result_table tr {
+    background-color: #191f24;
+    /*border-spacing: 20px;*/
+    /*padding-left: 20px;*/
     text-align: center;
+    /*column-span: 3;*/
+    border: 1px solid #2f74a0;
+    height: 50px;
+    width: 200px;
+    padding: 20px;
 }
+
+.airlines_cell td {
+    text-align: left;
+}
+
+

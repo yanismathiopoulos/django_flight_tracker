@@ -19,13 +19,12 @@ datepicker_widget = DatePickerInput(
 class FlightSearchInputForm(forms.Form):
     """Form for a user to give inputs for a round trip."""
 
-    # apikey = forms.CharField(label='API Key', initial='hsgRmFhjJRKIzN6o0MEovJXr9VJFxQQh')
     flight_type = forms.ChoiceField(label='Flight Type',
                                     initial='round',
                                     choices=(('round', 'Return'),
                                              ('oneway', 'One way')))
-    fly_from = forms.CharField(label='From', initial='kalamata')  # TODO search using city name instead of code
-    fly_to = forms.CharField(label='To', initial='bogota')
+    fly_from = forms.CharField(label='From', initial='barcelona', max_length=20)
+    fly_to = forms.CharField(label='To', initial='athens', max_length=20)
     date_from = forms.DateTimeField(label='Date From',
                                     initial='15/06/2020',
                                     input_formats=['%d/%m/%Y'],
@@ -45,9 +44,14 @@ class FlightSearchInputForm(forms.Form):
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget,
                                     required=False)
-    nights_in_dst_from = forms.IntegerField(label='Nights in destination from', initial=5, min_value=0, required=False)
-    nights_in_dst_to = forms.IntegerField(label='Nights in destination to', initial=15, min_value=0, required=False)
-    max_fly_duration = forms.IntegerField(label='Max of flight duration', initial=25, min_value=0,
+    nights_in_dst_from = forms.IntegerField(label='Nights in destination from',
+                                            initial=5, min_value=0, max_value=360,
+                                            required=False)
+    nights_in_dst_to = forms.IntegerField(label='Nights in destination to',
+                                          initial=15, min_value=0, max_value=360,
+                                          required=False)
+    max_fly_duration = forms.IntegerField(label='Max of flight duration',
+                                          initial=25, min_value=0, max_value=100,
                                           required=False)
     selected_cabins = forms.ChoiceField(label='Cabin', initial='M',
                                         choices=(('M', 'Economy'),
@@ -57,9 +61,12 @@ class FlightSearchInputForm(forms.Form):
     # partner_market = 'es'
     # locale = 'us'
     # curr = 'EUR'
-    price_from = forms.IntegerField(label='Price from', initial=0, min_value=0, required=False)
-    price_to = forms.IntegerField(label='Price to', initial=1200, max_value=10000, required=False)
-    max_stopovers = forms.IntegerField(label='Max stopovers', initial=3, min_value=0, required=False)
+    price_from = forms.IntegerField(label='Price from', initial=0, min_value=0, max_value=10000,
+                                    required=False)
+    price_to = forms.IntegerField(label='Price to', initial=1200, min_value=0, max_value=10000,
+                                  required=False)
+    max_stopovers = forms.IntegerField(label='Max stopovers', initial=3, min_value=0, max_value=10,
+                                       required=False)
     # select_airlines =
     # select_airlines_exclude = False
     sort = forms.ChoiceField(label='Sort by', initial='price',
@@ -68,59 +75,50 @@ class FlightSearchInputForm(forms.Form):
                                       ('quality', 'Quality'),
                                       ('date', 'Date')))
     # asc = 1
-    num_results = forms.IntegerField(label='Options to show', initial=5, min_value=0, required=True)
+    num_results = forms.IntegerField(label='Options to show', initial=5, min_value=0, max_value=150, required=True)
 
     def __init__(self, *args, **kwargs):
         super(FlightSearchInputForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        # self.helper.form_id = 'flight_search_input_form'
         self.helper.form_class = 'flight_search_input_form'
+        # self.helper.form_id = 'flight_search_input_form'
         # self.helper.form_method = 'post'
         # self.helper.form_action = reverse('index')
         # self.helper.add_input(Submit('submit', 'Submit'))
         self.helper.layout = Layout(
-            Row(
-                Column('flight_type', css_class='form-group col-md-6 mb-0'),
+            Row(Column('flight_type', css_class='form-group col-md-6 mb-0'),
                 # Column('apikey', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('fly_from', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('fly_from', css_class='form-group col-md-6 mb-0'),
                 Column('fly_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('date_from', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('date_from', css_class='form-group col-md-6 mb-0'),
                 Column('date_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('return_from', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('return_from', css_class='form-group col-md-6 mb-0'),
                 Column('return_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                'Nights in destination',
-                Column('nights_in_dst_from', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('nights_in_dst_from', css_class='form-group col-md-6 mb-0'),
                 Column('nights_in_dst_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('price_from', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('price_from', css_class='form-group col-md-6 mb-0'),
                 Column('price_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('max_fly_duration', css_class='form-group col-md-4 mb-0'),
+                ),
+            Row(Column('max_fly_duration', css_class='form-group col-md-4 mb-0'),
                 Column('selected_cabins', css_class='form-group col-md-4 mb-0'),
                 Column('max_stopovers', css_class='form-group col-md-4 mb-0'),
                 css_class='form-row'
-            ),
-            Row(
-                Column('sort', css_class='form-group col-md-6 mb-0'),
+                ),
+            Row(Column('sort', css_class='form-group col-md-6 mb-0'),
                 Column('num_results', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
-            ),
+                ),
             Submit('submit', 'Submit')
         )
 
