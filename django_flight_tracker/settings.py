@@ -27,7 +27,8 @@ with open('./etc/secret_key.txt') as f:
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'  # export DJANGO_DEBUG=False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'searchflights.herokuapp.com']
 
 # Application definition
 
