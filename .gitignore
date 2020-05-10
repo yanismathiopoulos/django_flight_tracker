@@ -139,9 +139,9 @@ dmypy.json
 /send_email/
 general_todo.md
 test.py
+*.sqlite
 
 # need for heroku
-#*.sqlite
 #/etc/
 #/etc/secret_key.txt
 #/etc/api_key.txt
