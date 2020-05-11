@@ -12,12 +12,12 @@ from contextlib import redirect_stdout
 def download_data(apikey, api, parameters, cache_expire_after=3600):
     inputs_str = urlencode(parameters)
     url = api + 'apikey=' + apikey + '&' + inputs_str
-    print("Getting the data...")
+    # print("Getting the data...")
     requests_cache.install_cache(cache_name='kiwi_cache', backend='sqlite', expire_after=cache_expire_after)
     response = requests.get(url)
 
     if response.from_cache:
-        print("Data loaded from cache")
+        # print("Data loaded from cache")
         response_json = response.json()
     elif response.status_code == 200:
         print("Request was successful, data was downloaded from kiwi")
@@ -148,14 +148,14 @@ def print_n_options(flight_type, options, n, apikey):
     for i in range(1, min(len(options), n + 1)):
         d[i] = dict()
         d[i]['option'] = i
-        print('--OPTION ', i)
+        # print('--OPTION ', i)
         d[i]['link'] = pyshorteners.Shortener().tinyurl.short(options[i].deep_link)
-        print('link: ', d[i]['link'])
+        # print('link: ', d[i]['link'])
         d[i]['price'] = options[i].price
-        print('price: ', d[i]['price'])
+        # print('price: ', d[i]['price'])
         d[i]['duration_total'] = to_hm(options[i].duration_total)
-        print('total duration: ', d[i]['duration_total'])
-        print('\n')
+        # print('total duration: ', d[i]['duration_total'])
+        # print('\n')
 
         x_list = ['outbound', 'inbound']
         y_list = [options[i].duration_outbound, options[i].duration_inbound]
@@ -170,18 +170,17 @@ def print_n_options(flight_type, options, n, apikey):
 
             d[i][x] = dict()
             d[i][x]['duration'] = to_hm(y)
-            print('{} (duration: {})'.format(x, d[i][x]))
+            # print('{} (duration: {})'.format(x, d[i][x]))
 
             d[i][x]['lst_airlines'] = []
             for j in range(len(z.flights)):
                 a_n = airline_name(z.flights[j].airline)
-                d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x][
-                    'lst_airlines']
+                d[i][x]['lst_airlines'].append(a_n) if a_n not in d[i][x]['lst_airlines'] else d[i][x]['lst_airlines']
 
-            print('airlines: ', d[i][x]['lst_airlines'])
+            # print('airlines: ', d[i][x]['lst_airlines'])
 
             d[i][x]['from'] = z.flights[0].flyFrom
-            print('from: ', d[i][x]['from'])
+            # print('from: ', d[i][x]['from'])
 
             d[i][x]['lst_stops'] = []
             for v in range(len(z.flights[:-1])):  # ignore first and last
@@ -193,10 +192,10 @@ def print_n_options(flight_type, options, n, apikey):
             if d[i][x]['lst_stops'] == []:
                 d[i][x]['lst_stops'] = ''
 
-            print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
+            # print('via {} stop(s): {}'.format(len(d[i][x]['lst_stops']), d[i][x]['lst_stops']))
 
             d[i][x]['to'] = z.flights[-1].flyTo
-            print('to: ', d[i][x]['to'])
+            # print('to: ', d[i][x]['to'])
 
             d[i][x]['departure_time'] = \
                 dt.datetime.strftime(
@@ -204,9 +203,9 @@ def print_n_options(flight_type, options, n, apikey):
                         z.flights[0].local_departure,  # first departure time
                         '%Y-%m-%dT%H:%M:%S.000Z'
                     ),
-                    '%a %d-%b-%Y %H:%M')
+                    '%a %d-%b-%Y %H:%M')  # TODO simplify this by putting the strptime and strftime as a method
 
-            print('departure time: ', d[i][x]['departure_time'])
+            # print('departure time: ', d[i][x]['departure_time'])
 
             d[i][x]['arrival_time'] = \
                 dt.datetime.strftime(
@@ -216,10 +215,10 @@ def print_n_options(flight_type, options, n, apikey):
                     ),
                     '%a %d-%b-%Y %H:%M')
 
-            print('arrival time: ', d[i][x]['arrival_time'])
+            # print('arrival time: ', d[i][x]['arrival_time'])
 
-        print('\n')
-        print('\n')
+        # print('\n')
+        # print('\n')
 
     return d
 
@@ -283,7 +282,7 @@ def transform_parameters(apikey, parameters):
 def search(flight_type, apikey, parameters, n):
     # print(parameters)
     parameters = transform_parameters(apikey, parameters)
-    print(parameters)
+    # print(parameters)
     response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/v2/search?",
                                   parameters=parameters, cache_expire_after=3600)
     if response_json is not None:

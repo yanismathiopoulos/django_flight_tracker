@@ -22,7 +22,6 @@
 
     {% for option_num, option_dict in content.items %}
 
-        {#        <table style="background-color:lightgreen">#}
         <table class="result_table">
 
             <tr>
@@ -31,8 +30,7 @@
                 <td>{{ option_dict.price }}€</td>
                 <td>{{ option_dict.duration_total }}</td>
             </tr>
-
-
+        
             <tr>
                 <td> {{ option_dict.outbound.departure_time }} </td>
                 <td> {{ option_dict.outbound.duration }} </td>
@@ -41,16 +39,13 @@
 
             <tr>
                 <td> {{ option_dict.outbound.from }} </td>
-
                 <td>
                     {% if option_dict.outbound.lst_stops != '' %}
-                        <p>via </p>
+                        via {{ option_dict.outbound.lst_stops }}
                     {% else %}
                         direct
                     {% endif %}
-                    {{ option_dict.outbound.lst_stops }}
                 </td>
-
                 <td> {{ option_dict.outbound.to }} </td>
             </tr>
 

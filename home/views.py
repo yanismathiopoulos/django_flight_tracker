@@ -32,7 +32,7 @@ def index(request):
                              n=form['num_results'],
                              parameters=parameters)
 
-            print(content)
+            # print(content)
 
             if content is None:
                 r = render(request, 'unsuccessful_request.html',

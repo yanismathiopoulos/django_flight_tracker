@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
@@ -23,35 +23,42 @@ class FlightSearchInputForm(forms.Form):
                                     initial='round',
                                     choices=(('round', 'Return'),
                                              ('oneway', 'One way')))
-    fly_from = forms.CharField(label='From', initial='barcelona', max_length=20)
-    fly_to = forms.CharField(label='To', initial='athens', max_length=20)
+    fly_from = forms.CharField(label='From',
+                               initial='Barcelona',
+                               max_length=20)
+    fly_to = forms.CharField(label='To',
+                             widget=forms.TextInput(attrs={'placeholder': 'try a destination...'}),
+                             max_length=20)
     date_from = forms.DateTimeField(label='Date From',
-                                    initial='15/06/2020',
+                                    initial=dt.datetime.today().strftime('%d/%m/%Y'),
+                                    # initial='15/06/2020',
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget)
     date_to = forms.DateTimeField(label='Date To',
-                                  initial='30/09/2020',
+                                  initial=(dt.datetime.today() + dt.timedelta(days=7)).strftime('%d/%m/%Y'),
                                   input_formats=['%d/%m/%Y'],
                                   widget=datepicker_widget)
     return_from = forms.DateTimeField(label='Return From',
-                                      # initial='15/06/2020',
+                                      initial=(dt.datetime.today() + dt.timedelta(days=7)).strftime('%d/%m/%Y'),
                                       input_formats=['%d/%m/%Y'],
                                       widget=datepicker_widget,
                                       required=False)
     return_to = forms.DateTimeField(label='Return To',
-                                    # initial=datetime.date.today,
-                                    # initial='30/09/2020',
+                                    initial=(dt.datetime.today() + dt.timedelta(days=14)).strftime('%d/%m/%Y'),
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget,
                                     required=False)
     nights_in_dst_from = forms.IntegerField(label='Nights in destination from',
-                                            initial=5, min_value=0, max_value=360,
+                                            # initial=5,
+                                            min_value=0, max_value=360,
                                             required=False)
     nights_in_dst_to = forms.IntegerField(label='Nights in destination to',
-                                          initial=15, min_value=0, max_value=360,
+                                          # initial=15,
+                                          min_value=0, max_value=360,
                                           required=False)
     max_fly_duration = forms.IntegerField(label='Max of flight duration',
-                                          initial=25, min_value=0, max_value=100,
+                                          # initial=25,
+                                          min_value=0, max_value=100,
                                           required=False)
     selected_cabins = forms.ChoiceField(label='Cabin', initial='M',
                                         choices=(('M', 'Economy'),
@@ -61,21 +68,27 @@ class FlightSearchInputForm(forms.Form):
     # partner_market = 'es'
     # locale = 'us'
     # curr = 'EUR'
-    price_from = forms.IntegerField(label='Price from', initial=0, min_value=0, max_value=10000,
+    price_from = forms.IntegerField(label='Price from',
+                                    # initial=0,
+                                    min_value=0, max_value=10000,
                                     required=False)
-    price_to = forms.IntegerField(label='Price to', initial=1200, min_value=0, max_value=10000,
+    price_to = forms.IntegerField(label='Price to',
+                                  # initial=1200,
+                                  min_value=0, max_value=10000,
                                   required=False)
-    max_stopovers = forms.IntegerField(label='Max stopovers', initial=3, min_value=0, max_value=10,
+    max_stopovers = forms.IntegerField(label='Max stopovers',
+                                       # initial=3,
+                                       min_value=0, max_value=10,
                                        required=False)
     # select_airlines =
     # select_airlines_exclude = False
-    sort = forms.ChoiceField(label='Sort by', initial='price',
-                             choices=(('price', 'Price'),
+    sort = forms.ChoiceField(label='Sort by', initial='quality',
+                             choices=(('quality', 'Best'),
+                                      ('price', 'Price'),
                                       ('duration', 'Duration'),
-                                      ('quality', 'Quality'),
                                       ('date', 'Date')))
     # asc = 1
-    num_results = forms.IntegerField(label='Options to show', initial=5, min_value=0, max_value=150, required=True)
+    num_results = forms.IntegerField(label='Options to show', initial=10, min_value=1, max_value=150, required=True)
 
     def __init__(self, *args, **kwargs):
         super(FlightSearchInputForm, self).__init__(*args, **kwargs)
