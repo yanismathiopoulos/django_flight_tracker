@@ -280,9 +280,8 @@ def transform_parameters(apikey, parameters):
 
 
 def search(flight_type, apikey, parameters, n):
-    # print(parameters)
     parameters = transform_parameters(apikey, parameters)
-    print(parameters)
+    # print(parameters)
     response_json = download_data(apikey, api="https://kiwicom-prod.apigee.net/v2/search?",
                                   parameters=parameters, cache_expire_after=3600)
     if response_json is not None:

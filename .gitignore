@@ -139,11 +139,10 @@ dmypy.json
 general_todo.md
 test.py
 *.sqlite
-
-# need for heroku
+/home/static/js/
 /etc/
 /etc/secret_key.txt
 /etc/api_key.txt
-Procfile
+
 
 

@@ -1,4 +1,3 @@
-import os
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.http import HttpResponse
@@ -6,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from .forms import FlightSearchInputForm
 from django_flight_tracker.flightsearch import *
+import os
 
 
 def index(request):
@@ -23,16 +23,16 @@ def index(request):
                           v is not None}
 
             # with open('./etc/api_key.txt') as f:
-            #     apikey = f.read().strip()
+            #     apikey_local = f.read().strip()
 
-            apikey = os.environ.get('API_KEY')
+            apikey = os.environ.get('API_KEY', open('./etc/api_key.txt').read().strip())
 
             content = search(flight_type=form['flight_type'],
                              apikey=apikey,
                              n=form['num_results'],
                              parameters=parameters)
 
-            print(content)
+            # print(content)
 
             if content is None:
                 r = render(request, 'unsuccessful_request.html',

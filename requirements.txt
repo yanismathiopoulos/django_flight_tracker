@@ -8,7 +8,6 @@ django-bootstrap4==1.1.1
 django-crispy-forms==1.9.0
 gunicorn==19.9.0
 idna==2.9
-numpy==1.18.3
 pandas==1.0.3
 psycopg2-binary==2.7.7
 pyshorteners==1.0.1
