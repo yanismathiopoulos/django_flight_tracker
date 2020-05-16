@@ -1,24 +1,6 @@
 {% extends "base_generic.html" %}
 
-{#TODO pagination#}
-
 {% block content %}
-
-    {#    { % form_object % }#}
-    {#    { % form_object_cleaned_data % }#}
-
-
-    {#    <script>#}
-    {#        var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];#}
-    {#        var text = "";#}
-    {#        var i;#}
-    {#        for (i = 0; i < cars.length; i++) {#}
-    {#          text += cars[i] + "<br>";#}
-    {#        }#}
-    {#        document.getElementById("demo").innerHTML = text;#}
-    {#    </script>#}
-
-
 
     {% for option_num, option_dict in content.items %}
 
@@ -30,7 +12,7 @@
                 <td>{{ option_dict.price }}€</td>
                 <td>{{ option_dict.duration_total }}</td>
             </tr>
-        
+
             <tr>
                 <td> {{ option_dict.outbound.departure_time }} </td>
                 <td> {{ option_dict.outbound.duration }} </td>

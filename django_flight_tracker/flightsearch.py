@@ -222,12 +222,6 @@ def print_n_options(flight_type, options, n, apikey):
 
 
 def to_iata_code(apikey, location_name):
-    # inputs_location = {
-    # 'term': 'rhodes',
-    # 'locale': 'en-US',
-    # 'limit': 10,
-    # 'active_only': 'true'
-    # }
 
     inputs_location = dict()
     inputs_location['term'] = location_name

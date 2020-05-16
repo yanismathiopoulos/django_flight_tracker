@@ -27,8 +27,8 @@ class FlightSearchInputForm(forms.Form):
                                initial='Barcelona',
                                max_length=20)
     fly_to = forms.CharField(label='Fly to',
-                             initial='Madrid',
-                             # widget=forms.TextInput(attrs={'placeholder': 'try a destination...'}),
+                             # initial='Madrid',
+                             widget=forms.TextInput(attrs={'placeholder': 'try a destination...'}),
                              max_length=20)
     date_from = forms.DateTimeField(label='Departure date from',
                                     initial=dt.datetime.today().strftime('%d/%m/%Y'),
