@@ -4,9 +4,7 @@ import requests
 import pyshorteners
 import requests_cache
 import pandas as pd
-import io
-import sys
-from contextlib import redirect_stdout
+import os
 
 
 def download_data(apikey, api, parameters, cache_expire_after=3600):
@@ -279,6 +277,20 @@ def transform_parameters(apikey, parameters):
     return parameters
 
 
+def get_apikey():
+    apikey = os.environ.get('API_KEY')
+
+    if apikey is None:
+        try:
+            with open('./etc/api_key.txt') as f:
+                apikey = f.read().strip()
+        except FileNotFoundError:
+            print("You need an API key, request one here: https://tequila.kiwi.com/")
+            apikey = None
+
+    return apikey
+
+
 def search(flight_type, apikey, parameters, n):
     parameters = transform_parameters(apikey, parameters)
     # print(parameters)
@@ -292,3 +304,6 @@ def search(flight_type, apikey, parameters, n):
         first_n_options = None
 
     return first_n_options
+
+
+
