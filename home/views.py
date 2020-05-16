@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.http import HttpResponse
@@ -15,24 +16,23 @@ def index(request):
 
         if form.is_valid():
 
-            if form['flight_type'] == 'oneway':
-                form.nights_in_dst_from.disabled = True
-
             form = form.clean()
 
             parameters = {k: v for (k, v) in form.items() if
                           k not in ('apikey', 'num_results') and
                           v is not None}
 
-            with open('./etc/api_key.txt') as f:
-                apikey = f.read().strip()
+            # with open('./etc/api_key.txt') as f:
+            #     apikey = f.read().strip()
+
+            apikey = os.environ.get('API_KEY')
 
             content = search(flight_type=form['flight_type'],
                              apikey=apikey,
                              n=form['num_results'],
                              parameters=parameters)
 
-            # print(content)
+            print(content)
 
             if content is None:
                 r = render(request, 'unsuccessful_request.html',

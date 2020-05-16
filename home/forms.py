@@ -23,28 +23,29 @@ class FlightSearchInputForm(forms.Form):
                                     initial='round',
                                     choices=(('round', 'Return'),
                                              ('oneway', 'One way')))
-    fly_from = forms.CharField(label='From',
+    fly_from = forms.CharField(label='Fly from',
                                initial='Barcelona',
                                max_length=20)
-    fly_to = forms.CharField(label='To',
-                             widget=forms.TextInput(attrs={'placeholder': 'try a destination...'}),
+    fly_to = forms.CharField(label='Fly to',
+                             initial='Madrid',
+                             # widget=forms.TextInput(attrs={'placeholder': 'try a destination...'}),
                              max_length=20)
-    date_from = forms.DateTimeField(label='Date From',
+    date_from = forms.DateTimeField(label='Departure date from',
                                     initial=dt.datetime.today().strftime('%d/%m/%Y'),
                                     # initial='15/06/2020',
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget)
-    date_to = forms.DateTimeField(label='Date To',
-                                  initial=(dt.datetime.today() + dt.timedelta(days=7)).strftime('%d/%m/%Y'),
+    date_to = forms.DateTimeField(label='Departure date to',
+                                  initial=(dt.datetime.today() + dt.timedelta(days=1)).strftime('%d/%m/%Y'),
                                   input_formats=['%d/%m/%Y'],
                                   widget=datepicker_widget)
-    return_from = forms.DateTimeField(label='Return From',
+    return_from = forms.DateTimeField(label='Return date from',
                                       initial=(dt.datetime.today() + dt.timedelta(days=7)).strftime('%d/%m/%Y'),
                                       input_formats=['%d/%m/%Y'],
                                       widget=datepicker_widget,
                                       required=False)
-    return_to = forms.DateTimeField(label='Return To',
-                                    initial=(dt.datetime.today() + dt.timedelta(days=14)).strftime('%d/%m/%Y'),
+    return_to = forms.DateTimeField(label='Return date to',
+                                    initial=(dt.datetime.today() + dt.timedelta(days=8)).strftime('%d/%m/%Y'),
                                     input_formats=['%d/%m/%Y'],
                                     widget=datepicker_widget,
                                     required=False)
@@ -112,6 +113,7 @@ class FlightSearchInputForm(forms.Form):
                 Column('fly_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
                 ),
+            # Row(Div('Departure')),  # TODO Add text 'departure'
             Row(Column('date_from', css_class='form-group col-md-6 mb-0'),
                 Column('date_to', css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
@@ -143,4 +145,40 @@ class FlightSearchInputForm(forms.Form):
     def clean(self):
         # data = self.cleaned_data
         data = super().clean()
+
+        if data['flight_type'] == 'oneway':
+            # user inputs return dates
+            if data['return_from'] is not None or data['return_to'] is not None:
+                raise ValidationError('No return dates required in one-way flights. Please clear selection.')
+
+            # user inputs nights_in_dst
+            if data['nights_in_dst_from'] is not None or data['nights_in_dst_to'] is not None:
+                raise ValidationError('No nights in destination required in one-way flights. Please clear selection.')
+
+        if data['flight_type'] == 'round':
+            # user didn't specify neither return dates nor nights_in_dst
+            if (data['return_from'] is None or data['return_to'] is None) \
+                    and (
+                    data['nights_in_dst_from'] is None or data['nights_in_dst_to'] is None):
+                raise ValidationError('Please specify return dates or nights in destination period.')
+
+            # user chose both nights_in_dst
+            elif data['nights_in_dst_from'] is not None and data['nights_in_dst_to'] is not None:
+                # user also chose one from return dates
+                if (data['return_from'] is None and data['return_to'] is not None) or \
+                        (data['return_from'] is not None and data['return_to'] is None):
+                    raise ValidationError('Please specify both return dates.')
+
+            # user chose both return dates
+            elif data['return_from'] is not None and data['return_to'] is not None:
+                # user also chose one from nights_in_dst
+                if (data['nights_in_dst_from'] is None and data['nights_in_dst_to'] is not None) or \
+                        (data['nights_in_dst_from'] is not None and data['nights_in_dst_to'] is None):
+                    raise ValidationError('Please specify full nights in destination period.')
+
+                # user chose return dates earlier than departure dates
+                if (data['return_from'] < data['date_from']) or \
+                        (data['return_to'] < data['date_to']):
+                    raise ValidationError('Return date cannot be earlier than departure date.')
+
         return data
