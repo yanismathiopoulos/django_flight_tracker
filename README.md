@@ -1,4 +1,4 @@
-# django_flight_tracker
+# Flight Tracker
 
 This project is a very simple website that searches flights using kiwi's api (https://www.kiwi.com/en/).
 
