@@ -3,6 +3,8 @@ body {
     color: #add1ea;
     padding-left: 80px;
     background-image: url('../images/background1.jpg');
+    width: 600px;
+    padding-top: 50px;
 }
 
 .developed_by_footer p {
@@ -15,7 +17,7 @@ body {
 
 
 .flight_search_input_form {
-    width: 600px;
+    width: 500px;
     /*color: #2c376d;*/
 }
 

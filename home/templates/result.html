@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    <br>
 
     {% for option_num, option_dict in content.items %}
 
@@ -23,7 +24,7 @@
                 <td> {{ option_dict.outbound.from }} </td>
                 <td>
                     {% if option_dict.outbound.lst_stops != '' %}
-                        via {{ option_dict.outbound.lst_stops }}
+                        via {{ option_dict.outbound.lst_stops|join:", " }}
                     {% else %}
                         direct
                     {% endif %}
@@ -32,7 +33,7 @@
             </tr>
 
             <tr class="airlines_cell">
-                <td colspan="3"> airline(s): {{ option_dict.outbound.lst_airlines }} </td>
+                <td colspan="3"> fly with {{ option_dict.outbound.lst_airlines|join:", " }} </td>
             </tr>
 
             {% if option_dict.inbound %}
@@ -47,7 +48,7 @@
                     <td> {{ option_dict.inbound.from }} </td>
                     <td>
                         {% if option_dict.inbound.lst_stops != '' %}
-                            via {{ option_dict.inbound.lst_stops }}
+                            via {{ option_dict.inbound.lst_stops|join:", " }}
                         {% else %}
                             direct
                         {% endif %}
@@ -56,7 +57,7 @@
                 </tr>
 
                 <tr class="airlines_cell">
-                    <td colspan="3"> airline(s): {{ option_dict.inbound.lst_airlines }} </td>
+                    <td colspan="3"> fly with {{ option_dict.inbound.lst_airlines|join:", " }} </td>
                 </tr>
 
             {% endif %}
