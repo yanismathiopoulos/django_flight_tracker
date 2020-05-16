@@ -181,4 +181,12 @@ class FlightSearchInputForm(forms.Form):
                         (data['return_to'] < data['date_to']):
                     raise ValidationError('Return date cannot be earlier than departure date.')
 
+                # user chose return date to earlier than return date from
+                if data['return_to'] < data['return_from']:
+                    raise ValidationError('Return date to cannot be earlier than return date from.')
+
+        # user chose departure date to earlier than departure date from
+        if data['date_to'] < data['date_from']:
+            raise ValidationError('Departure date to cannot be earlier than departure date from.')
+
         return data
