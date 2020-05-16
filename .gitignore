@@ -136,7 +136,7 @@ dmypy.json
 .idea
 /etc/email_credentials.json
 /send_email/
-general_todo.md
+notes.md
 test.py
 *.sqlite
 /home/static/js/
