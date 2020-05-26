@@ -134,15 +134,10 @@ dmypy.json
 
 # ignored manually
 .idea
-/etc/email_credentials.json
-/send_email/
+/etc/
 notes.md
-test.py
+draft.py
 *.sqlite
 /home/static/js/
-/etc/
-/etc/secret_key.txt
-/etc/api_key.txt
-
 
 
